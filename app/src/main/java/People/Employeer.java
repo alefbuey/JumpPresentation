@@ -1,4 +1,4 @@
-package Logic;
+package People;
 
 public class Employeer extends User{
 }
