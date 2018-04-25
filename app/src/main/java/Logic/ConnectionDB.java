@@ -1,5 +1,7 @@
 package Logic;
 
+import android.util.Log;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,7 +22,10 @@ public final class ConnectionDB {
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost/Jump",
                             "postgres", "1234");
-        } catch (Exception e) {}
+            Log.d("Connection","connected succesfully");
+        } catch (Exception e) {
+            Log.d("Connection","failed to connect");
+        }
 
         return c;
     }
@@ -36,7 +41,11 @@ public final class ConnectionDB {
             c.setAutoCommit(false);
             c.commit();
             c.close();
-        } catch (Exception e) {}
+            Log.d("ExecuteUpdate","executed succesfully");
+        } catch (Exception e) {
+            Log.d("ExecuteUpdate","failed to execute");
+
+        }
     }
 
     //Method to insert data in a table
@@ -54,6 +63,11 @@ public final class ConnectionDB {
         String sql = "DELETE FROM " + tableName + " WHERE id = " + id + ");";
         executeUpdateSQL(sql);
     }
+
+
+
+
+
 
     public ArrayList<String> executeSelectSQL(String sqlStatement, ArrayList<String> fields){
         Connection c;
@@ -83,12 +97,20 @@ public final class ConnectionDB {
             rs.close();
             stmt.close();
             c.close();
+
+            Log.d("ExecuteQuery","executed succesfully");
         } catch (Exception e) {
-            String error = (e.getMessage());
+            Log.d("ExecuteQuery","failed to execute");
         }
         return datos;
     }
 
+
+    public int getId(String tableName, String fieldName, String fieldValue) {
+        String sql = "SELECT id FROM " + tableName + " WHERE " + fieldName + " = '" + fieldValue + "';";
+        ArrayList<String> result = executeSelectSQL(sql, new ArrayList<String>(){{add("id");}});
+        return Integer.parseInt(result.get(0));
+    }
 
 
 /*    public void updateData(String values) {

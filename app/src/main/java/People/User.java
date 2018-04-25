@@ -1,6 +1,6 @@
 package People;
 
-import java.awt.Image;
+import android.media.Image;
 import java.text.SimpleDateFormat;
 
 public class User {
@@ -18,8 +18,11 @@ public class User {
     private String nationality;
     private float availableAmount;
     private String about;
+
     private Image photo;
     private String phone;
     private String preferences;
+
+
 
 }
