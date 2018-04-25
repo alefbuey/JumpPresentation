@@ -3,6 +3,7 @@ package Logic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -17,35 +18,80 @@ public final class ConnectionDB {
         try {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost/Baropodometro",
+                    .getConnection("jdbc:postgresql://localhost/Jump",
                             "postgres", "1234");
         } catch (Exception e) {}
 
-        System.out.println("Opened database successfully");
         return c;
     }
 
-
-    //Method to insert data in a table
-    public void insertData(String tableName, String values) {
-        //values debe estar en el formato correspondiente SQL
+    public void executeUpdateSQL(String sqlStatement){
         Connection c;
         Statement stmt = null;
         try {
             c = connectDB();
             stmt = c.createStatement();
-            String sql = "INSERT INTO" + tableName + "VALUES (" + values + ");";
-            stmt.executeUpdate(sql);
+            stmt.executeUpdate(sqlStatement);
             stmt.close();
             c.setAutoCommit(false);
             c.commit();
             c.close();
         } catch (Exception e) {}
+    }
 
+    //Method to insert data in a table
+    public void insertData(String tableName, String values) {
+        String sql = "INSERT INTO " + tableName + " VALUES (" + values + ");";
+        executeUpdateSQL(sql);
+    }
+    //
+    public void updateData(String tableName, int id, String columValue, String columName) {
+        String sql = "UPDATE INTO " + tableName + " SET " + columName+" = "+ columValue + " WHERE id = "+id+";";
+        executeUpdateSQL(sql);
+    }
+
+    public void deleteData(String tableName, int id) {
+        String sql = "DELETE FROM " + tableName + " WHERE id = " + id + ");";
+        executeUpdateSQL(sql);
+    }
+
+    public ArrayList<String> executeSelectSQL(String sqlStatement, ArrayList<String> fields){
+        Connection c;
+
+        Statement stmt = null;
+        ArrayList<String> datos = new ArrayList<String>();
+
+        try {
+            c = connectDB();
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlStatement);
+            ResultSetMetaData rsm = rs.getMetaData();
+            int numColumns = rsm.getColumnCount();
+            while (rs.next()) {
+                String registro = "";
+                for (int i=0;i<numColumns;i++){
+                    if(i!=numColumns-1) {
+                        registro += rs.getString(i) + ",";
+                    }
+                    else{
+                        registro += rs.getString(i);
+                    }
+                }
+
+                datos.add(registro);
+            }
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception e) {
+            String error = (e.getMessage());
+        }
+        return datos;
     }
 
 
-    public void updateData(String values) {
+
+/*    public void updateData(String values) {
         //values debe estar en el formato correspondiente SQL
         String[] datosSplit = values.split(",");
         Connection c;
@@ -68,7 +114,7 @@ public final class ConnectionDB {
 
 
 
-    /*Funcion que se encarga de recuperar los registros de la tabla paciente*/
+    *//*Funcion que se encarga de recuperar los registros de la tabla paciente*//*
     public ArrayList<String> recoverData() {
         Connection c;
 
@@ -134,8 +180,8 @@ public final class ConnectionDB {
 
 
 
-    /*Funcion que se encarga de eliminar un registro de la tabla paciente,
-    para borrar se debe pasar como parametro la cedula del paciente y la fecha de analisis*/
+    *//*Funcion que se encarga de eliminar un registro de la tabla paciente,
+    para borrar se debe pasar como parametro la cedula del paciente y la fecha de analisis*//*
     public void deleteRegister(String cedula) {
 
         Connection c;
@@ -245,5 +291,5 @@ public final class ConnectionDB {
             System.err.println(e.getMessage());
             System.exit(0);
         }
-    }
+    }*/
 }
