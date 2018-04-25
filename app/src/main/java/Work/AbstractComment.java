@@ -12,8 +12,13 @@ public abstract class AbstractComment {
 
 
     //Constructor
-    public AbstractComment(){
-
+    public AbstractComment(int id, User user, String description, SimpleDateFormat datePosted) {
+        this.id = id;
+        this.user = user;
+        this.description = description;
+        this.datePosted = datePosted;
     }
+
+    //Getters and setters
 
 }

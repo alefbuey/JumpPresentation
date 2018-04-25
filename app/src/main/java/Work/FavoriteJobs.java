@@ -2,6 +2,11 @@ package Work;
 
 import java.util.ArrayList;
 
-public class FavoriteJobs {
-    private ArrayList<Job> jobs;
+public class FavoriteJobs extends Jobs{
+
+    public FavoriteJobs(ArrayList<Job> jobs) {
+        super(jobs);
+    }
 }
+
+

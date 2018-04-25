@@ -32,9 +32,36 @@ public class Job{
 
 
     //Constructor
-    public Job (int id){
 
+    public Job(int id, Employer employer, ArrayList<Employee> employees, ArrayList<Employee> applicants, String mode, String state, String location, String title, String description, float jobCost, Image photo, SimpleDateFormat datePosted, SimpleDateFormat dateStart, SimpleDateFormat dateEnd, SimpleDateFormat datePostEnd, byte availablePercentage, double[] address, String[] tags, String[] categories, ArrayList<ParentComment> comments) {
+        this.id = id;
+        this.employer = employer;
+        this.employees = employees;
+        this.applicants = applicants;
+        this.mode = mode;
+        this.state = state;
+        this.location = location;
+        this.title = title;
+        this.description = description;
+        this.jobCost = jobCost;
+        this.photo = photo;
+        this.datePosted = datePosted;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.datePostEnd = datePostEnd;
+        this.availablePercentage = availablePercentage;
+        this.address = address;
+        this.tags = tags;
+        this.categories = categories;
+        this.comments = comments;
     }
+
+
+    //Getters and setters
+
+
+
+
 
 
     //Methods
