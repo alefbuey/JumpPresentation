@@ -8,6 +8,6 @@ public class Jobs {
     //Metodos
 
     public void displayAllJobs(){
-        
+
     }
 }
