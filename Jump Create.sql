@@ -40,7 +40,7 @@ CREATE TABLE PaypalAccount (Id int4 NOT NULL, IdUser int4 NOT NULL, Email varcha
 CREATE TABLE TagJump (Id SERIAL NOT NULL, Name varchar(50) NOT NULL, Description varchar(100), CategoryId int4 NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE TransactionJump (id SERIAL NOT NULL, idUser int4 NOT NULL, Idtype int4 NOT NULL, PRIMARY KEY (id));
 CREATE TABLE TransactionType (id SERIAL NOT NULL, name int4 NOT NULL, description int4 NOT NULL, PRIMARY KEY (id));
-CREATE TABLE UserJump (Id SERIAL NOT NULL, IdLocation int4 NOT NULL, IdState int4 NOT NULL, TypeNationalIdentifier int4 NOT NULL, NationalIdentifier int4 NOT NULL UNIQUE, Name varchar(30) NOT NULL, LastName varchar(30) NOT NULL, Email varchar(30) NOT NULL UNIQUE, Password varchar(15) NOT NULL, BirthDate date NOT NULL, Direction varchar(255), Gender char(1) NOT NULL, Nationality varchar(30) NOT NULL, AvailableMoney numeric(9, 2) NOT NULL, Nonce varchar(10) NOT NULL UNIQUE, PRIMARY KEY (Id));
+CREATE TABLE UserJump (Id SERIAL NOT NULL, IdLocation int4, IdState int4, TypeNationalIdentifier int4, NationalIdentifier int4 UNIQUE, Name varchar(30) NOT NULL, LastName varchar(30) NOT NULL, Email varchar(30) NOT NULL UNIQUE, Password varchar(15) NOT NULL, BirthDate date NOT NULL, Direction varchar(255), Gender char(1) NOT NULL, Nationality varchar(30), AvailableMoney numeric(9, 2), Nonce varchar(10) NOT NULL UNIQUE, PRIMARY KEY (Id));
 CREATE TABLE UserStaff (IdUser int4 NOT NULL, About varchar(500) NOT NULL, PhotoPath varchar(225) NOT NULL, Cellphone varchar(20) NOT NULL, Image bytea NOT NULL, PRIMARY KEY (IdUser));
 CREATE TABLE UserState (Id SERIAL NOT NULL, State varchar(10) NOT NULL, PRIMARY KEY (Id));
 
@@ -94,6 +94,8 @@ ALTER TABLE Followers ADD CONSTRAINT FKFollowers802750 FOREIGN KEY (IdFollower) 
 ALTER TABLE Followers ADD CONSTRAINT FKFollowers802736 FOREIGN KEY (IdFollowed) REFERENCES UserJump (Id);
 ALTER TABLE TransactionJump ADD CONSTRAINT FKTransactio399029 FOREIGN KEY (Idtype) REFERENCES TransactionType (id);
 ALTER TABLE JobPhotos ADD CONSTRAINT FKJobPhotos830987 FOREIGN KEY (IdJob) REFERENCES Job (Id);
+
+
 
 
 --Constraints extras
