@@ -28,7 +28,7 @@ CREATE TABLE EmployeeState (id SERIAL NOT NULL, description varchar(100) NOT NUL
 CREATE TABLE Employer (Id int4 NOT NULL, Ranking int4 NOT NULL, SpentAmount numeric(7, 2) NOT NULL, JobsPosted int4 NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE FavoritesJobs (IdEmployee int4 NOT NULL, IdJob int4 NOT NULL, PRIMARY KEY (IdEmployee, IdJob));
 CREATE TABLE Followers (IdFollower int4 NOT NULL, IdFollowed int4 NOT NULL, PRIMARY KEY (IdFollower, IdFollowed));
-CREATE TABLE Job (Id SERIAL NOT NULL, IdEmployeer int4 NOT NULL, Mode int4 NOT NULL, State int4 NOT NULL, IdLocation int4 NOT NULL, Title varchar(100) NOT NULL, Description varchar(500) NOT NULL, JobCost numeric(9, 2) NOT NULL, DatePosted date NOT NULL, DateStart date NOT NULL, DateEnd date NOT NULL, DatePostEnd date NOT NULL, AvailablePercentage int4 NOT NULL, NumberApplicants int4 DEFAULT 1 NOT NULL, PRIMARY KEY (Id));
+CREATE TABLE Job (Id SERIAL NOT NULL, IdEmployer int4 NOT NULL, Mode int4 NOT NULL, State int4 NOT NULL, IdLocation int4 NOT NULL, Title varchar(100) NOT NULL, Description varchar(500) NOT NULL, JobCost numeric(9, 2) NOT NULL, DatePosted date NOT NULL, DateStart date NOT NULL, DateEnd date NOT NULL, DatePostEnd date NOT NULL, AvailablePercentage int4 NOT NULL, NumberApplicants int4 DEFAULT 1 NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE Job_TagJump (IdJob int4 NOT NULL, IdTag int4 NOT NULL, PRIMARY KEY (IdJob, IdTag));
 CREATE TABLE JobAddress (IdJob int4 NOT NULL, Direction int4 NOT NULL, Latitude numeric(10, 8) NOT NULL, Longitude numeric(10, 8) NOT NULL, PRIMARY KEY (IdJob));
 CREATE TABLE JobMode (Id SERIAL NOT NULL, Mode varchar(20) NOT NULL, PRIMARY KEY (Id));
@@ -71,7 +71,7 @@ ALTER TABLE Employee_TagJump ADD CONSTRAINT FKEmployee_T803399 FOREIGN KEY (IdTa
 ALTER TABLE Employer ADD CONSTRAINT FKEmployer996969 FOREIGN KEY (Id) REFERENCES UserJump (Id);
 ALTER TABLE Job ADD CONSTRAINT FKJob21280 FOREIGN KEY (Mode) REFERENCES JobMode (Id);
 ALTER TABLE Job ADD CONSTRAINT FKJob218444 FOREIGN KEY (State) REFERENCES JobState (Id);
-ALTER TABLE Job ADD CONSTRAINT FKJob67976 FOREIGN KEY (IdEmployeer) REFERENCES Employer (Id);
+ALTER TABLE Job ADD CONSTRAINT FKJob67976 FOREIGN KEY (IdEmployer) REFERENCES Employer (Id);
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo204629 FOREIGN KEY (IdEmployee) REFERENCES Employee (Id);
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo483457 FOREIGN KEY (IdJob) REFERENCES Job (Id);
 ALTER TABLE Job_TagJump ADD CONSTRAINT FKJob_TagJum687162 FOREIGN KEY (IdJob) REFERENCES Job (Id);

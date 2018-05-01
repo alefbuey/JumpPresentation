@@ -15,32 +15,39 @@ public final class ConnectionDB {
     }
 
     /*Method that makes the connection to the DB*/
-    public Connection connectDB() {
-        Connection c = null;
-        try {
-            Class.forName("org.postgresql.Driver");
-            c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost/Jump",
-                            "postgres", "1234");
-            Log.d("Connection","connected succesfully");
-        } catch (Exception e) {
-            Log.d("Connection","failed to connect");
-        }
+    public void connectDB() {
 
-        return c;
+        Thread sqlThread = new Thread() {
+            public void run() {
+                try {
+                    Class.forName("org.postgresql.Driver");
+                    Connection c = null;
+                    c = DriverManager
+                            .getConnection("jdbc:postgresql://localhost:5432/Jump",
+                                    "postgres", "1234");
+                    Log.d("Connection", "connected succesfully");
+                } catch (Exception e) {
+                    Connection c = null;
+                    Log.d("Connection", "failed to connect: " + e.getMessage());
+                }
+            }
+        };
+
+        sqlThread.start();
+
     }
 
     public void executeUpdateSQL(String sqlStatement){
         Connection c;
         Statement stmt = null;
         try {
-            c = connectDB();
-            stmt = c.createStatement();
+            //c = connectDB();
+           // stmt = c.createStatement();
             stmt.executeUpdate(sqlStatement);
             stmt.close();
-            c.setAutoCommit(false);
-            c.commit();
-            c.close();
+            //c.setAutoCommit(false);
+            //c.commit();
+            //c.close();
             Log.d("ExecuteUpdate","executed succesfully");
         } catch (Exception e) {
             Log.d("ExecuteUpdate","failed to execute");
@@ -76,8 +83,8 @@ public final class ConnectionDB {
         ArrayList<String> datos = new ArrayList<String>();
 
         try {
-            c = connectDB();
-            stmt = c.createStatement();
+            //c = connectDB();
+           // stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlStatement);
             ResultSetMetaData rsm = rs.getMetaData();
             int numColumns = rsm.getColumnCount();
@@ -96,7 +103,7 @@ public final class ConnectionDB {
             }
             rs.close();
             stmt.close();
-            c.close();
+          //  c.close();
 
             Log.d("ExecuteQuery","executed succesfully");
         } catch (Exception e) {
