@@ -8,75 +8,51 @@
     android:gravity="center"
     tools:context=".AddJob">
 
-    <EditText
-        android:id="@+id/etXTitle"
-        android:hint="title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/etXDesc"
-        android:hint="description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/etXMode"
-        android:hint="mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/etXGenAmnt"
-        android:hint="general amount"
-        android:inputType="numberDecimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ViewFlipper android:id="@+id/vf_AddJob"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="3">
 
-    <EditText
-        android:id="@+id/etXCurrAmnt"
-        android:hint="current amount"
-        android:inputType="numberDecimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <include layout="@layout/add_job_1"/>
+        <include layout="@layout/add_job_2"/>
+        <include layout="@layout/add_job_3"/>
 
-    <EditText
-        android:id="@+id/etXDateStrt"
-        android:hint="date start"
-        android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    </ViewFlipper>
 
-    <EditText
-        android:id="@+id/etXDateEnd"
-        android:hint="date end"
-        android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/etXDateLimAppl"
-        android:hint="limit date to apply"
-        android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="40dp">
 
-    <EditText
-        android:id="@+id/etXPayMeth"
-        android:hint="payment method"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_Previous"
+            android:text="Previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
-    <EditText
-        android:id="@+id/etXNumVac"
-        android:hint="number of vacancies"
-        android:inputType="number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_Next"
+            android:text="Next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"/>
 
-    <Button
-        android:id="@+id/btnXAddJob"
-        android:text="Add Job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_Done"
+            android:text="Done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"/>
+
+
+
+    </RelativeLayout>
 
 </LinearLayout>

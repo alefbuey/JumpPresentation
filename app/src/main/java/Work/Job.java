@@ -2,11 +2,10 @@ package Work;
 
 import android.media.Image;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Logic.ConnectionDB;
+import Logic.ConnectionWebService;
 import People.Employee;
 import People.Employer;
 
@@ -88,14 +87,14 @@ public class Job{
 
     public void createJob(){
 
-        ConnectionDB c = new ConnectionDB();
+        ConnectionWebService c = new ConnectionWebService();
 
         String values =
                         "default" + "," +
                         employer.getId() + "," +
-                        c.getId("jobmode", "mode",mode) + "," +
-                        c.getId("jobstate", "state",state) + "," +
-                        c.getId("location", "city",location) + "," +
+                       // c.getId("jobmode", "mode",mode) + "," +
+                       // c.getId("jobstate", "state",state) + "," +
+                       // c.getId("location", "city",location) + "," +
                         title + "," +
                         description + "," +
                         jobCost + "," +
@@ -107,7 +106,7 @@ public class Job{
                         30 + "," +
                         0;
 
-        c.insertData("Job",values);
+        //c.insertData("Job",values);
     }
 
     public void deleteJob(){

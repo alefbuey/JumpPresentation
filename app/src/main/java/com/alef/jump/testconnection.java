@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import Logic.ConnectionDB;
+import Logic.ConnectionWebService;
 
 public class testconnection extends AppCompatActivity {
 
@@ -18,13 +18,6 @@ public class testconnection extends AppCompatActivity {
         setContentView(R.layout.activity_testconnection);
 
 
-        btns= findViewById(R.id.buttonqq);
-        btns.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ConnectionDB c = new ConnectionDB();
-                c.connectDB();
-            }
-        });
+
     }
 }
