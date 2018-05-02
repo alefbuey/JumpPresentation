@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.alef.jump.Feed;
-
 import People.User;
 
 public class GetRequestUser extends SendGetRequest{

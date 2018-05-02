@@ -99,15 +99,15 @@ public class Register extends AppCompatActivity {
             data.put("email",etEmail.getText().toString());
             data.put("password",etPassword.getText().toString());
             Log.d("JSON TO STRING",data.toString());
-
+            //Envio a traves de metodo POST
+            SendPostRequest spr = new SendPostRequest(getApplicationContext(), Constants.getInsertUser(),data);
+            spr.setMensaje("Successful User Creation");
+            spr.execute();
         }catch (Exception e){
             Log.d("CREACION JSON",e.getMessage());
         }
 
-        //Envio a traves de metodo POST
-        SendPostRequest spr = new SendPostRequest(getApplicationContext(), Constants.getInsertUser(),data);
-        spr.setMensaje("Successful User Creation");
-        spr.execute();
+
         Intent i = new Intent(getApplicationContext(),Login.class);
         startActivity(i);
     }
