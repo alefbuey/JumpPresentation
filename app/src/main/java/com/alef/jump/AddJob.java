@@ -8,12 +8,19 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Logic.Constants;
+import Logic.SendPostRequest;
 import People.Employer;
 import Work.Job;
 
@@ -84,18 +91,45 @@ public class AddJob extends AppCompatActivity {
             }
         });
 
-
-
-
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Job newJob = new Job(
+                JSONObject jobData= new JSONObject();
+
+                try {
+                    jobData.put("idemployer","1");
+                    jobData.put("mode",etMode.getText().toString());
+                    jobData.put("state","1");
+                   // jobData.put("idlocation","1");
+                    jobData.put("title", etTitle.getText().toString());
+                    jobData.put("description", etDescription.getText().toString());
+                    jobData.put("jobcost",etGenAmnt.getText().toString());
+                    jobData.put("jobcostcovered",etCurrAmnt.getText().toString());
+                    jobData.put("dateposted", "2018-05-01");
+                    jobData.put("datestart",etDateStrt.getText().toString());
+                    jobData.put("dateend",etDateEnd.getText().toString());
+                    jobData.put("datepostend", etDateLimAppl.getText().toString());
+                    jobData.put("numbervacancies",etNumVac.getText().toString());
+
+                    SendPostRequest saveJob = new SendPostRequest(getApplicationContext(), Constants.getJobCreate(),jobData);
+
+                    saveJob.execute();
+
+
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), "Error",
+                            Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+
+                }
+
+
+                /*Job newJob = new Job(
                                     new Employer(1),
                                     etMode.getText().toString(),
-                                    "Posted",
-                                    "Quito",
+                                    "1",
+                                    "null",
                                     etTitle.getText().toString(),
                                     etDescription.getText().toString(),
                                     9999.99f,
@@ -108,7 +142,7 @@ public class AddJob extends AppCompatActivity {
                                     null,
                                     null
                                     );
-
+*/
 
 /*
                 Job newJob = new Job(
@@ -131,7 +165,7 @@ public class AddJob extends AppCompatActivity {
 */
 
 
-                newJob.createJob();
+               // newJob.createJob();
 
             }
         });
