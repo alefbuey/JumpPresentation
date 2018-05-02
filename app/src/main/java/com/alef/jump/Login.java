@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import Logic.Constants;
+import Logic.GetRequestUser;
 import Logic.SendGetRequest;
 
 public class Login extends AppCompatActivity {
@@ -27,12 +28,13 @@ public class Login extends AppCompatActivity {
 
     public void onClickLogin(View v) {
 
-        SendGetRequest sgr = new SendGetRequest(getApplicationContext(), Constants.getSelectUser() + "?email=" + etEmail.getText().toString() + "&password=" + etPassword.getText().toString());
-        sgr.execute();
+        GetRequestUser gru = new GetRequestUser(getApplicationContext(),Constants.getSelectUser() + "?email=" + etEmail.getText().toString() + "&password=" + etPassword.getText().toString());
+        gru.setEmail(etEmail.getText().toString());
+        gru.execute();
     }
 
     public void onClickRegister(View v){
-        Intent i = new Intent(getApplicationContext(),Register1.class);
+        Intent i = new Intent(getApplicationContext(),Register.class);
         startActivity(i);
     }
 }

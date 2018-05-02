@@ -2,33 +2,21 @@ package Logic;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
-
 import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Iterator;
 
-import javax.net.ssl.HttpsURLConnection;
 
 public class SendPostRequest extends AsyncTask<String, Void, String> {
 
     Context context;
     String receiveUrl;
     JSONObject receiveJSON;
+    String mensaje; //Mensaje de confirmacion, si desea ponerlo
 
     public SendPostRequest(Context context, String receiveUrl, JSONObject receiveJSON) {
         this.context = context;
@@ -36,18 +24,19 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
         this.receiveJSON = receiveJSON;
     }
 
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     protected void onPreExecute(){}
 
     protected String doInBackground(String... arg0) {
-        OutputStream os = null;
-        BufferedReader in = null;
-        HttpURLConnection conn = null;
-        String mensaje;
+        String respuesta;
         try {
-            URL url = new URL(this.receiveUrl); // here is your URL path
-            String message = this.receiveJSON.toString();
+            URL url = new URL(this.receiveUrl);             // La URL a la cual quieres enviar
+            String message = this.receiveJSON.toString();   // El objeto en Json que quieres enviar
 
-            conn = (HttpURLConnection) url.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");
@@ -58,51 +47,26 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
             conn.setRequestProperty("X-Requested-With", "XMLHttpRequest");
             conn.connect();
 
-            os = new BufferedOutputStream(conn.getOutputStream());;
+            OutputStream os = new BufferedOutputStream(conn.getOutputStream());;
             os.write(message.getBytes());
             os.flush();
             os.close();
 
             conn.disconnect();
-            mensaje = "Creación Exitosa";
-
-//            int responseCode=conn.getResponseCode();
-
-//            if (responseCode == HttpsURLConnection.HTTP_OK) {
-//
-//                in=     new BufferedReader(
-//                        new InputStreamReader(
-//                        new BufferedInputStream(
-//                                conn.getInputStream())));
-//
-//                StringBuffer sb = new StringBuffer("");
-//                String line="";
-//
-//                while((line = in.readLine()) != null) {
-//
-//                    sb.append(line);
-//                    break;
-//                }
-//
-//                in.close();
-//                mensaje = sb.toString();
-//
-//            }
-//            else {
-//                mensaje = new String("false : "+responseCode);
-//            }
+            respuesta = this.mensaje;
 
         } catch (IOException e) {
-            mensaje = new String("Exception: " + e.getMessage());
+            respuesta = "Exception: " + e.getMessage();
         }
 
-        return mensaje;
+        return respuesta;
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(this.context, result,
-                Toast.LENGTH_LONG).show();
+    protected void onPostExecute(String respuesta) {
+        if(respuesta!=null){
+            Toast.makeText(this.context, respuesta, Toast.LENGTH_LONG).show();
+        }
     }
 }
 

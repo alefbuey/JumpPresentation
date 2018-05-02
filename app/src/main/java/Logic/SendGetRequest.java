@@ -1,13 +1,8 @@
 package Logic;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.alef.jump.Feed;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,12 +13,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import People.User;
-
 public class SendGetRequest extends AsyncTask<String, Void, String> {
 
     private static final String TAG = SendGetRequest.class.getSimpleName();
-
 
     Context context;
     String receiveUrl;
@@ -57,18 +49,6 @@ public class SendGetRequest extends AsyncTask<String, Void, String> {
             Log.e(TAG, "Exception: " + e.getMessage());
         }
         return response;
-    }
-
-    @Override
-    protected void onPostExecute(String response) {
-        if(User.checkPassword(response)){
-            Intent i = new Intent(this.context,Feed.class);
-            //i.putExtra("email",etEmail.getText().toString());
-            this.context.startActivity(i);
-        }else{
-            Toast.makeText(this.context,"Incorrect Email or Password",Toast.LENGTH_LONG).show();
-        }
-
     }
 
     private String convertStreamToString(InputStream in) {
