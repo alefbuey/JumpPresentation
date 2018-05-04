@@ -86,26 +86,7 @@ public class Job{
 
     public void createJob(){
 
-        ConnectionWebService c = new ConnectionWebService();
-
-        String values =
-                        "default" + "," +
-                        employer.getId() + "," +
-                       // c.getId("jobmode", "mode",mode) + "," +
-                       // c.getId("jobstate", "state",state) + "," +
-                       // c.getId("location", "city",location) + "," +
-                        title + "," +
-                        description + "," +
-                        jobCost + "," +
-                        photo + "," +
-                        datePosted + "," +
-                        dateStart + "," +
-                        dateEnd + "," +
-                        datePostEnd + "," +
-                        30 + "," +
-                        0;
-
-        //c.insertData("Job",values);
+        
     }
 
     public void deleteJob(){
