@@ -8,9 +8,11 @@ public class Constants {
 
     //private static final String PUERTO_HOST = "80";
 
+
     //private static final String ip = "http://192.168.88.44"; //Oscar
-    private static final String ip = "http://192.168.10.100"; //Fernando
-    //private static final String ip = "http://192.168.0.108"; //Fernando
+    private static final String ip = "http://192.168.10.100"; //Fernando repetidor
+    //private static final String ip = "http://192.168.0.108"; //Fernando emulador
+
 
 
     //URLs del Web Service
@@ -30,24 +32,23 @@ public class Constants {
     public static String getSelectUser() {
         return selectUser;
     }
-
     public static String getInsertUser() {
         return insertUser;
     }
+    public static String getUpdateUser() { return updateUser; }
+    public static String getRemoveUser() { return removeUser; }
 
     public static String getJobRead() {
         return jobRead;
     }
-
     public static String getJobCreate() {
         return jobCreate;
     }
-
     public static String getJobDelete() {
         return jobDelete;
     }
-
     public static String getJobUpdate() {
         return jobUpdate;
     }
 }
+

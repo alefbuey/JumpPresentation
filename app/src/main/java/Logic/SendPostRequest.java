@@ -16,23 +16,29 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
     String receiveUrl;
     JSONObject receiveJSON;
 
+    String mensaje; //Mensaje de confirmacion, si desea ponerlo
+
     public SendPostRequest(Context context, String receiveUrl, JSONObject receiveJSON) {
         this.context = context;
         this.receiveUrl = receiveUrl;
         this.receiveJSON = receiveJSON;
     }
 
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     protected void onPreExecute(){}
 
     protected String doInBackground(String... arg0) {
-        OutputStream os;
-        HttpURLConnection conn;
-        String mensaje;
+
+        String respuesta;
         try {
+
             URL url = new URL(this.receiveUrl); // here is your URL path
             String message = this.receiveJSON.toString();
 
-            conn = (HttpURLConnection) url.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");
@@ -43,24 +49,26 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
             conn.setRequestProperty("X-Requested-With", "XMLHttpRequest");
             conn.connect();
 
-            os = new BufferedOutputStream(conn.getOutputStream());;
+            OutputStream os = new BufferedOutputStream(conn.getOutputStream());;
             os.write(message.getBytes());
             os.flush();
             os.close();
 
             conn.disconnect();
-            mensaje = "Creación Exitosa";
+
+            respuesta = this.mensaje;
 
         } catch (IOException e) {
-            mensaje = new String("Exception: " + e.getMessage());
+            respuesta = "Exception: " + e.getMessage();
         }
 
-        return mensaje;
+        return respuesta;
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(this.context, result,
-                Toast.LENGTH_LONG).show();
+    protected void onPostExecute(String respuesta) {
+        if(respuesta!=null){
+            Toast.makeText(this.context, respuesta, Toast.LENGTH_LONG).show();
+        }
     }
 }

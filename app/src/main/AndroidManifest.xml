@@ -18,13 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Feed"
-            android:label="@string/title_activity_lateral_bar_ex"
+            android:label="@string/title_activity_feed"
             android:theme="@style/AppTheme">
 
 
         </activity>
+
+        <activity android:name=".Register" />
+        <activity android:name=".Login"></activity>
+
     </application>
 
 </manifest>

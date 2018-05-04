@@ -1,7 +1,6 @@
 package Logic;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import java.io.BufferedInputStream;
@@ -14,10 +13,11 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import People.User;
+
 public class SendGetRequest extends AsyncTask<String, Void, String> {
 
     private static final String TAG = SendGetRequest.class.getSimpleName();
-
 
     Context context;
     String receiveUrl;
@@ -53,9 +53,10 @@ public class SendGetRequest extends AsyncTask<String, Void, String> {
         return response;
     }
 
+
     @Override
-    protected void onPostExecute(String response) {
-    }
+    protected void onPostExecute(String response) {}
+
 
     private String convertStreamToString(InputStream in) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
