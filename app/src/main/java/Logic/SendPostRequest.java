@@ -37,8 +37,8 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
             String message = this.receiveJSON.toString();   // El objeto en Json que quieres enviar
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
+//            conn.setReadTimeout(15000 /* milliseconds */);
+//            conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
