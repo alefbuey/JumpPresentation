@@ -1,10 +1,8 @@
 package People;
 
-//import java.awt.Image;
+import android.media.Image;
 import android.util.Log;
-
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 
 public class User {
@@ -25,7 +23,7 @@ public class User {
     private String nationality;
     private float availableAmount;
     private String about;
-    //private Image photo;
+    private Image photo;
     private String phone;
     private String preferences;
 
@@ -43,5 +41,6 @@ public class User {
         }
         return existeJSON;
     }
+
 
 }

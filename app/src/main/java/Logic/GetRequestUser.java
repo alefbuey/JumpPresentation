@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.alef.jump.Feed;
+
 import People.User;
 
 public class GetRequestUser extends SendGetRequest{
@@ -18,6 +20,7 @@ public class GetRequestUser extends SendGetRequest{
         super(context, receiveUrl);
     }
 
+    @Override
     protected void onPostExecute(String response) {
         if(User.checkPassword(response)){
             Intent i = new Intent(this.context,Feed.class);

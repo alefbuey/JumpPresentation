@@ -13,6 +13,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import People.User;
+
 public class SendGetRequest extends AsyncTask<String, Void, String> {
 
     private static final String TAG = SendGetRequest.class.getSimpleName();
@@ -50,6 +52,11 @@ public class SendGetRequest extends AsyncTask<String, Void, String> {
         }
         return response;
     }
+
+
+    @Override
+    protected void onPostExecute(String response) {}
+
 
     private String convertStreamToString(InputStream in) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));

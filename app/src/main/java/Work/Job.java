@@ -2,8 +2,8 @@ package Work;
 
 import android.media.Image;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import People.Employee;
 import People.Employer;
@@ -20,10 +20,10 @@ public class Job{
     private String description;
     private float jobCost;
     private Image photo;
-    private SimpleDateFormat datePosted;
-    private SimpleDateFormat dateStart;
-    private SimpleDateFormat dateEnd;
-    private SimpleDateFormat datePostEnd;
+    private Date datePosted;
+    private Date dateStart;
+    private Date dateEnd;
+    private Date datePostEnd;
     private byte availablePercentage;
     private double[] address;
     private String[] tags;
@@ -33,7 +33,8 @@ public class Job{
 
     //Constructor
 
-    public Job(int id, Employer employer, ArrayList<Employee> employees, ArrayList<Employee> applicants, String mode, String state, String location, String title, String description, float jobCost, Image photo, SimpleDateFormat datePosted, SimpleDateFormat dateStart, SimpleDateFormat dateEnd, SimpleDateFormat datePostEnd, byte availablePercentage, double[] address, String[] tags, String[] categories, ArrayList<ParentComment> comments) {
+
+    public Job(int id, Employer employer, ArrayList<Employee> employees, ArrayList<Employee> applicants, String mode, String state, String location, String title, String description, float jobCost, Image photo, Date datePosted, Date dateStart, Date dateEnd, Date datePostEnd, byte availablePercentage, double[] address, String[] tags, String[] categories, ArrayList<ParentComment> comments) {
         this.id = id;
         this.employer = employer;
         this.employees = employees;
@@ -56,8 +57,25 @@ public class Job{
         this.comments = comments;
     }
 
+    public Job(Employer employer, String mode, String state, String location, String title, String description, float jobCost, Image photo, Date datePosted, Date dateStart, Date dateEnd, Date datePostEnd, byte availablePercentage, double[] address, String[] tags) {
+        this.employer = employer;
+        this.mode = mode;
+        this.state = state;
+        this.location = location;
+        this.title = title;
+        this.description = description;
+        this.jobCost = jobCost;
+        this.photo = photo;
+        this.datePosted = datePosted;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.datePostEnd = datePostEnd;
+        this.availablePercentage = availablePercentage;
+        this.address = address;
+        this.tags = tags;
+    }
 
-    //Getters and setters
+//Getters and setters
 
 
 
@@ -68,6 +86,26 @@ public class Job{
 
     public void createJob(){
 
+        ConnectionWebService c = new ConnectionWebService();
+
+        String values =
+                        "default" + "," +
+                        employer.getId() + "," +
+                       // c.getId("jobmode", "mode",mode) + "," +
+                       // c.getId("jobstate", "state",state) + "," +
+                       // c.getId("location", "city",location) + "," +
+                        title + "," +
+                        description + "," +
+                        jobCost + "," +
+                        photo + "," +
+                        datePosted + "," +
+                        dateStart + "," +
+                        dateEnd + "," +
+                        datePostEnd + "," +
+                        30 + "," +
+                        0;
+
+        //c.insertData("Job",values);
     }
 
     public void deleteJob(){
