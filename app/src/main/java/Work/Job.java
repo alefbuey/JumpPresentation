@@ -5,7 +5,6 @@ import android.media.Image;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Logic.ConnectionWebService;
 import People.Employee;
 import People.Employer;
 
