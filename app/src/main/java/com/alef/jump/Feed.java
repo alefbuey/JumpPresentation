@@ -13,13 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Feed extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, jobItem.OnFragmentInteractionListener{
 
 
-
+    LinearLayout container;
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -51,6 +52,7 @@ public class Feed extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        container = findViewById(R.id.ll_container);
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView bottomBar = findViewById(R.id.navigation);
@@ -64,6 +66,10 @@ public class Feed extends AppCompatActivity
 
         NavigationView lateralBar = findViewById(R.id.nav_view);
         lateralBar.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.container, .createInstance(1), "jobItem")
+                .commit();
     }
 
     @Override

@@ -9,51 +9,89 @@
     tools:showIn="@layout/app_bar_feed">
 
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation"
+        app:layout_constraintEnd_toStartOf="@id/navigation"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintTop_toTopOf="parent">
 
-        >
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <fragment
+
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.alef.jump.jobItem"
-                android:id="@+id/fr_jobItem"
-                android:layout_alignParentTop="true"
-                class="com.alef.jump.jobItem"
-                tools:layout="@layout/fragment_job_item" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.alef.jump.jobItem"
-                android:id="@+id/fr_jobItem1"
-                android:layout_alignParentTop="true"
-                class="com.alef.jump.jobItem"
-                tools:layout="@layout/fragment_job_item" />
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.alef.jump.jobItem"
-                android:id="@+id/fr_jobItem2"
-                android:layout_alignParentTop="true"
-                class="com.alef.jump.jobItem"
-                tools:layout="@layout/fragment_job_item" />
+                <fragment
+                    android:id="@+id/fr_jobItem"
+                    android:name="com.alef.jump.jobItem"
+                    class="com.alef.jump.jobItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:layout="@layout/fragment_job_item" />
 
-        </LinearLayout>
+                <fragment
+                    android:id="@+id/fr_jobItem1"
+                    android:name="com.alef.jump.jobItem"
+                    class="com.alef.jump.jobItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:layout="@layout/fragment_job_item" />
 
-    </ScrollView>
+                <fragment
+                    android:id="@+id/fr_jobItem2"
+                    android:name="com.alef.jump.jobItem"
+                    class="com.alef.jump.jobItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:layout="@layout/fragment_job_item" />
+
+                <fragment
+                    android:id="@+id/fr_jobItem3"
+                    android:name="com.alef.jump.jobItem"
+                    class="com.alef.jump.jobItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:layout="@layout/fragment_job_item" />
+
+                <fragment
+                    android:id="@+id/fr_jobItem4"
+                    android:name="com.alef.jump.jobItem"
+                    class="com.alef.jump.jobItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:layout="@layout/fragment_job_item" />
+
+                <fragment
+                    android:id="@+id/fr_jobItem5"
+                    android:name="com.alef.jump.jobItem"
+                    class="com.alef.jump.jobItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    tools:layout="@layout/fragment_job_item" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"

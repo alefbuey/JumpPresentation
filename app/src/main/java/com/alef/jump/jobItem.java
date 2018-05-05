@@ -1,5 +1,6 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,89 +8,89 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link jobItem.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link jobItem#newInstance} factory method to
- * create an instance of this fragment.
- */
+import Logic.Constants;
+import Logic.GetRequest;
+
 public class jobItem extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    ImageView imPhotoProf;
+    TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
+    ImageView imPhotoJob;
+    Button btnAddFav, btnApply;
+    LinearLayout llNumVac, llListaCateg;
 
-    private OnFragmentInteractionListener mListener;
+    int id = 0;
+    private static final String EXTRA_ID = "IDMETA";
 
-    public jobItem() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment jobItem.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static jobItem newInstance(String param1, String param2) {
-        jobItem fragment = new jobItem();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static jobItem createInstance(int id) {
+        jobItem jItem = new jobItem();
+        Bundle bundle = new Bundle();
+        bundle.putInt(EXTRA_ID, id);
+        jItem.setArguments(bundle);
+        return jItem;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job_item, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_job_item, container, false);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        imPhotoProf = view.findViewById(R.id.im_photoProfile);
+        tvProfileName = view.findViewById(R.id.tv_profileName);
+        tvJobCost = view.findViewById(R.id.tv_jobCost);
+        tvJobName = view.findViewById(R.id.tv_jobName);
+        tvNumDays = view.findViewById(R.id.tv_numDaysAgo);
+        imPhotoJob = view.findViewById(R.id.im_photoJob);
+        btnAddFav = view.findViewById(R.id.btn_addFav);
+        btnApply = view.findViewById(R.id.btn_apply);
+        llNumVac = view.findViewById(R.id.ll_numVac);
+        llListaCateg = view.findViewById(R.id.ll_listCateg);
+
+
+        GetRequest testReqJob = new GetRequest() {
+            @Override
+            public void procesarRespuesta(JSONObject jsonObject) {
+                try {
+                    JSONObject dataJob = jsonObject.getJSONObject("dataJob");
+                    JSONObject dataUser = jsonObject.getJSONObject("dataUser");
+
+                    tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
+                    tvJobName.setText(dataJob.getString("title"));
+                    tvJobCost.setText(dataJob.getString("jobcost"));
+                    tvNumDays.setText(dataJob.getString("dateposted"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        if(id > 0){
+            testReqJob.getJobData(getActivity(), Constants.getJobRead()+"?id="+id);
+            return view;
+        }else{
+            return null;
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+
 
     /**
      * This interface must be implemented by activities that contain this
