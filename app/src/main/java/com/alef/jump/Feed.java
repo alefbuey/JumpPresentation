@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -81,7 +78,7 @@ public class Feed extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.lateral_bar_ex, menu);
+        getMenuInflater().inflate(R.menu.feed, menu);
         return true;
     }
 
@@ -110,15 +107,15 @@ public class Feed extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(),Profile.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_myJobs) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_myBusiness) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_addJob) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
 
         }
 
