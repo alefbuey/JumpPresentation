@@ -12,4 +12,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus magna eu luctus mattis. Donec id neque efficitur arcu convallis imperdiet. Sed lectus velit, posuere vel quam sed, consectetur porta ligula</string>
 </resources>

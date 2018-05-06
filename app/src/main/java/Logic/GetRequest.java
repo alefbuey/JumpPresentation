@@ -25,8 +25,7 @@ import static com.android.volley.VolleyLog.TAG;
 
 public abstract class GetRequest {
 
-    public void getJobData(Context context, String url) {
-
+    public void getData(Context context, String url) {
         // Petición GET
         VolleySingleton.
                 getInstance(context).
