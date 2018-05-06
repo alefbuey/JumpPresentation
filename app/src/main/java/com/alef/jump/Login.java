@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity {
 
         GetRequestUser gru = new GetRequestUser(getApplicationContext(),Constants.getSelectUser() + "?email=" + etEmail.getText().toString() + "&password=" + etPassword.getText().toString());
         gru.setEmail(etEmail.getText().toString());
+        gru.setOption(2);
         gru.execute();
     }
 

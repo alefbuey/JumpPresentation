@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileGeneral">
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars = "vertical"
+            android:scrollbarStyle="insideInset"
+            android:isScrollContainer="true"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="-About:"
+                    android:textSize="20dp"
+                    android:layout_marginTop="30dp"/>
+                <!--Añadir un Relative Layout-->
+                <TextView
+                    android:id="@+id/tvAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsum"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#464040"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"></LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="-Information:"
+                    android:textSize="20dp"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:rowCount="5"
+                    android:layout_margin="20dp">
+                    <TextView
+                        android:text="Location: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_row="0"
+                        android:layout_column="0"/>
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Quito - Ecuador"
+                        android:layout_row="0"
+                        android:layout_column="1"/>
+
+                    <TextView
+                        android:text="Nationality: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_row="1"
+                        android:layout_column="0"/>
+                    <TextView
+                        android:id="@+id/tvNationality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Ecuadorian"
+                        android:layout_row="1"
+                        android:layout_column="1"/>
+
+                    <TextView
+                        android:text="Birthdate: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_row="2"
+                        android:layout_column="0"/>
+                    <TextView
+                        android:id="@+id/tvBirthDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="21-04-1996"
+                        android:layout_row="2"
+                        android:layout_column="1"/>
+
+                    <TextView
+                        android:text="Direction: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_row="3"
+                        android:layout_column="0"/>
+                    <TextView
+                        android:id="@+id/tvDirection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Quitumbe"
+                        android:layout_row="3"
+                        android:layout_column="1"/>
+
+                    <TextView
+                        android:text="Available Money: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_row="4"
+                        android:layout_column="0"/>
+                    <TextView
+                        android:id="@+id/tvAvailableMoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="15.000 $"
+                        android:layout_row="4"
+                        android:layout_column="1"/>
+
+                </GridLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#464040"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"></LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="-Preferences:"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/tvPreferences"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="python, C, C#, Java "
+                    android:layout_marginBottom="30dp"/>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+</LinearLayout>
