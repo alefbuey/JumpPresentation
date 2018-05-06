@@ -2,6 +2,7 @@ package com.alef.jump;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -75,6 +76,14 @@ public class jobItem extends Fragment {
         llListaCateg = view.findViewById(R.id.ll_listCateg);
 
 
+        btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), JobView.class);
+                startActivity(intent);
+            }
+        });
+
         GetRequest testReqJob = new GetRequest() {
             @Override
             public void procesarRespuesta(JSONObject jsonObject) {
@@ -100,6 +109,10 @@ public class jobItem extends Fragment {
         }else{
             return view;
         }
+
+
+
+
     }
 
 
