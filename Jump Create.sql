@@ -216,3 +216,23 @@ insert into favoritesjobs values
 (1,2),
 (1,3);
 
+
+select * from tagJump
+
+insert into category (nombre, description) values
+('Programming', ''),
+('Home',''),
+('Teaching','');
+
+insert into tagjump (name, description, categoryid) values
+('Web Programming', '', 1),
+('Haskell', '', 1),
+('Postgres', '', 1),
+('Plumbery', '', 2),
+('Carpentry', '', 2),
+('Clean house', '', 2),
+('Math tutoring', '', 3),
+('English tutoring', '', 3),
+('Programming teaching', '', 3);
+
+

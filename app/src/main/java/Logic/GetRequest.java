@@ -2,7 +2,6 @@ package Logic;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
@@ -13,7 +12,6 @@ import com.alef.jump.R;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -27,7 +25,7 @@ import static com.android.volley.VolleyLog.TAG;
 
 public abstract class GetRequest {
 
-    public void getUserData(Context context, String url){
+    public void getData(Context context, String url) {
         // Petición GET
         VolleySingleton.
                 getInstance(context).
@@ -35,7 +33,7 @@ public abstract class GetRequest {
                         new JsonObjectRequest(
                                 Request.Method.GET,
                                 url,
-                                (JSONObject) null,
+                                null,
                                 new Response.Listener<JSONObject>() {
 
                                     @Override
