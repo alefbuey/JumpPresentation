@@ -31,13 +31,26 @@ public class jobItem extends Fragment {
     int id = 0;
     private static final String EXTRA_ID = "IDMETA";
 
-    public static jobItem createInstance(int id) {
-        jobItem jItem = new jobItem();
-        Bundle bundle = new Bundle();
-        bundle.putInt(EXTRA_ID, id);
-        jItem.setArguments(bundle);
-        return jItem;
+
+    public jobItem (){}
+
+    @SuppressLint("ValidFragment")
+    public jobItem (int id){
+        this.id = id;
+
+
     }
+
+
+    public static jobItem newInstance(int id) {
+
+        jobItem f = new jobItem(id);
+
+        Bundle b = new Bundle();
+        f.setArguments(b);
+        return f;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,7 +98,7 @@ public class jobItem extends Fragment {
             testReqJob.getJobData(getActivity(), Constants.getJobRead()+"?id="+id);
             return view;
         }else{
-            return null;
+            return view;
         }
     }
 

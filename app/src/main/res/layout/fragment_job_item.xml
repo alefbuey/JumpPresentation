@@ -10,22 +10,24 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-       <ImageView
+       <de.hdodenhof.circleimageview.CircleImageView
+           xmlns:app="http://schemas.android.com/apk/res-auto"
            android:id="@+id/im_photoProfile"
            android:layout_width="50dp"
            android:layout_height="50dp"
-           android:src="@drawable/ic_menu_person"
+           android:src="@drawable/ph_profile"
            app:layout_constraintLeft_toLeftOf="parent"
            app:layout_constraintTop_toTopOf="parent"
            android:layout_marginTop="10dp"
            android:layout_marginLeft="20dp"
-           />
+           app:civ_border_width="2dp"
+           app:civ_border_color="#FF000000"/>
 
        <TextView
            android:id="@+id/tv_profileName"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Anthony Ramos"
+           android:text="Maryam Noether"
            android:textSize="15sp"
            app:layout_constraintTop_toBottomOf="@id/im_photoProfile"
            app:layout_constraintBottom_toTopOf="@+id/im_photoProfile"
@@ -37,7 +39,7 @@
            android:id="@+id/tv_jobName"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Cafeteria Logo"
+           android:text="Fragment Example"
            android:textSize="20sp"
            app:layout_constraintLeft_toLeftOf="@+id/im_photoProfile"
            app:layout_constraintTop_toBottomOf="@id/im_photoProfile"
@@ -56,12 +58,12 @@
 
        <ImageView
            android:id="@+id/im_photoJob"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="150dp"
+           android:layout_height="100dp"
            app:layout_constraintRight_toRightOf="parent"
            app:layout_constraintTop_toBottomOf="@id/im_photoProfile"
            android:layout_marginRight="30dp"
-           android:background="@drawable/ic_launcher_background"/>
+           android:background="@drawable/ph_job"/>
 
 
 
@@ -100,15 +102,15 @@
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/ic_menu_add"/>
+               android:src="@drawable/ic_vac"/>
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/ic_menu_add"/>
+               android:src="@drawable/ic_free_vac"/>
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/ic_menu_add"/>
+               android:src="@drawable/ic_free_vac"/>
 
        </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class Feed extends AppCompatActivity
 
 
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,7 @@ public class Feed extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        container = findViewById(R.id.ll_container);
+
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView bottomBar = findViewById(R.id.navigation);
@@ -67,9 +69,24 @@ public class Feed extends AppCompatActivity
         NavigationView lateralBar = findViewById(R.id.nav_view);
         lateralBar.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, .createInstance(1), "jobItem")
-                .commit();
+
+        //Generar jobItems
+
+        container = findViewById(R.id.ll_container);
+
+        LinearLayout pseudoCont = new LinearLayout(this);
+        pseudoCont.setOrientation(LinearLayout.VERTICAL);
+        pseudoCont.setId(12345);
+
+        getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(1), "someTag1").commit();
+        getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(2), "someTag2").commit();
+        getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(3), "someTag2").commit();
+
+        container.addView(pseudoCont);
+
+
+
+
     }
 
     @Override
