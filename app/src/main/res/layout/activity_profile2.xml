@@ -5,20 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Profile">
+    tools:context=".Profile"
+    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
+        android:background="#FFB84E">
 
-        <ImageButton
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_share"
-            android:background="#FFF"
+            android:src="@drawable/ic_settings"
+            android:clickable="true"
             />
 
     </LinearLayout>
@@ -27,12 +29,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:background="#FFB84E"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="#FFB84E">
 
             <RelativeLayout
                 android:layout_width="85dp"
@@ -78,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
+
             />
 
         <TextView
@@ -97,17 +102,17 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu_camera"
+                android:src="@drawable/ic_computer"
                 />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu_gallery"
+                android:src="@drawable/ic_art"
                 />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu_share"
+                android:src="@drawable/ic_teach"
                 />
 
         </LinearLayout>
