@@ -104,7 +104,7 @@ public class jobItem extends Fragment {
         };
 
         if(id > 0){
-            testReqJob.getJobData(getActivity(), Constants.getJobRead()+"?id="+id);
+            testReqJob.getData(getActivity(), Constants.getJobRead()+"?id="+id);
             return view;
         }else{
             return view;
