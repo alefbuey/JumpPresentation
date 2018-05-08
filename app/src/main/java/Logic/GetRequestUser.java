@@ -68,7 +68,8 @@ public class GetRequestUser extends SendGetRequest {
                         jsonUser.getString("birthdate"),
                         jsonUser.getString("direction"),
                         jsonUser.getString("nationality"),
-                        jsonUser.getString("availablemoney")
+                        jsonUser.getString("availablemoney"),
+                        jsonUser.getString("rank")
                         );
             } catch (JSONException e) {
                 e.printStackTrace();

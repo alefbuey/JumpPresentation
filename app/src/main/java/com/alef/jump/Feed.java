@@ -130,10 +130,9 @@ public class Feed extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-//            User user = (User) getIntent().getSerializableExtra("user");
-
+            User user = (User) getIntent().getSerializableExtra("user");
             Intent intent = new Intent(getApplicationContext(),Profile.class);
-//            intent.putExtra("user",user);
+            intent.putExtra("user",user);
             startActivity(intent);
 
         } else if (id == R.id.nav_myJobs) {
