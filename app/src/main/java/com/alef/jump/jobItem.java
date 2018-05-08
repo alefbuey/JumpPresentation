@@ -1,19 +1,14 @@
 package com.alef.jump;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,16 +18,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import Logic.Constants;
 import Logic.GetRequest;
 
-public class jobItem extends Fragment {
+public class jobItem extends Fragment{
 
     ImageView imPhotoProf, imShare, imAddFav;
     TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
@@ -46,6 +35,8 @@ public class jobItem extends Fragment {
 
 
     public jobItem (){}
+
+
 
     @SuppressLint("ValidFragment")
     public jobItem (int id){
@@ -120,18 +111,14 @@ public class jobItem extends Fragment {
                 try {
                     JSONObject dataJob = jsonObject.getJSONObject("dataJob");
                     JSONObject dataUser = jsonObject.getJSONObject("dataUser");
+                    JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
+
 
                     tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
                     tvJobName.setText(dataJob.getString("title"));
                     tvJobCost.setText(dataJob.getString("jobcost"));
                     tvNumDays.setText(dataJob.getString("dateposted"));
 
-                    /*Tratamiento de la imagen del perfil */
-
-
-                    Bitmap bm = getImage("/var/www/html/pruebaImg/index.php?=1");
-
-                    imPhotoProf.setImageBitmap(bm);
 
 
                 } catch (JSONException e) {
@@ -139,10 +126,15 @@ public class jobItem extends Fragment {
                 }
 
             }
+
+            @Override
+            public void procesarRespuesta(JSONArray jsonArray) {
+
+            }
         };
 
         if(id > 0){
-            testReqJob.getData(getActivity(), Constants.getJobRead()+"?id="+id);
+            testReqJob.getJsonObject(getActivity(), Constants.getJobRead()+"?id="+id);
             return view;
         }else{
             return view;
@@ -172,22 +164,5 @@ public class jobItem extends Fragment {
     }
 
 
-    public static Bitmap getImage(String url){
-        Bitmap img = null ;
-        try {
-            URL feedImage = new URL(url);
-            HttpURLConnection conn= (HttpURLConnection)feedImage.openConnection();
-            InputStream is = conn.getInputStream();
-            img = BitmapFactory.decodeStream(is);
-
-        } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return img ;
-    }
 
 }

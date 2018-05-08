@@ -78,4 +78,7 @@ public class SendGetRequest extends AsyncTask<String, Void, String> {
         }
         return sb.toString();
     }
+
+
+
 }

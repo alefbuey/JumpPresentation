@@ -1,13 +1,20 @@
 package com.alef.jump;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -17,21 +24,28 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import Logic.Constants;
+import Logic.GetRequest;
+import Logic.MaskWatcher;
 import Logic.SendPostRequest;
-import People.Employer;
-import Work.Job;
 
-public class AddJob extends AppCompatActivity {
+public class AddJob extends Activity {
 
-    EditText etTitle, etDescription, etMode, etGenAmnt, etCurrAmnt, etDateStrt, etDateEnd,
+
+    EditText etTitle, etDescription, etGenAmnt, etCurrAmnt, etDateStrt, etDateEnd,
             etDateLimAppl, etNumVac;
+
+    TextView tvMode;
 
     Button btnPrev, btnNext, btnDone;
 
     ViewFlipper vfAddJob;
+
+    Spinner spinnerModes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +53,23 @@ public class AddJob extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job);
 
+        spinnerModes = findViewById(R.id.sp_Mode);
+
         etTitle = findViewById(R.id.et_Title);
         etDescription = findViewById(R.id.et_Desc);
-        etMode = findViewById(R.id.et_Mode);
+        tvMode = findViewById(R.id.tv_Mode);
         etGenAmnt = findViewById(R.id.et_GenAmnt);
         etCurrAmnt = findViewById(R.id.et_CurrAmnt);
+
         etDateStrt = findViewById(R.id.et_DateStrt);
+        etDateStrt.addTextChangedListener(new MaskWatcher("####-##-##"));
+
         etDateEnd = findViewById(R.id.et_DateEnd);
+        etDateEnd.addTextChangedListener(new MaskWatcher("####-##-##"));
+
         etDateLimAppl = findViewById(R.id.et_DateLimAppl);
+        etDateLimAppl.addTextChangedListener(new MaskWatcher("####-##-##"));
+
         etNumVac = findViewById(R.id.et_NumVac);
 
         btnPrev = findViewById(R.id.btn_Previous);
@@ -99,7 +122,7 @@ public class AddJob extends AppCompatActivity {
 
                 try {
                     jobData.put("idemployer","1");
-                    jobData.put("mode",etMode.getText().toString());
+                    jobData.put("mode", tvMode.getText().toString());
                     jobData.put("state","1");
                    // jobData.put("idlocation","1");
                     jobData.put("title", etTitle.getText().toString());
@@ -125,48 +148,51 @@ public class AddJob extends AppCompatActivity {
                 }
 
 
-                /*Job newJob = new Job(
-                                    new Employer(1),
-                                    etMode.getText().toString(),
-                                    "1",
-                                    "null",
-                                    etTitle.getText().toString(),
-                                    etDescription.getText().toString(),
-                                    9999.99f,
-                                    null,
-                                    new Date(),
-                                    getDate(etDateStrt.getText().toString()),
-                                    getDate(etDateEnd.getText().toString()),
-                                    getDate(etDateLimAppl.getText().toString()),
-                                    (byte) 69,
-                                    null,
-                                    null
-                                    );
-*/
-
-/*
-                Job newJob = new Job(
-                        new Employer(1),
-                        "Single",
-                        "Posted",
-                        "Quito",
-                        "Clean House",
-                        "Nooooo",
-                        9999.99f,
-                        null,
-                        new Date(),
-                        getDate("2018-05-15"),
-                        getDate("2018-05-16"),
-                        getDate("2018-05-10"),
-                        (byte) 69,
-                        null,
-                        null
-                );
-*/
 
 
-               // newJob.createJob();
+            }
+        });
 
+
+
+        /*Extraccion de los modos de trabajo*/
+
+        final List<String> modes = new ArrayList<>();
+
+        GetRequest getJobModes = new GetRequest() {
+            @Override
+            public void procesarRespuesta(JSONObject jsonObject) {
+
+            }
+
+            @Override
+            public void procesarRespuesta(JSONArray jsonArray) {
+                for (int i = 0; i<jsonArray.length();i++){
+                    try {
+                        modes.add(jsonArray.getJSONObject(i).getString("mode"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+
+        getJobModes.getJsonArray(getApplicationContext(),Constants.getJobModeRead());
+
+
+        ArrayAdapter<String> modesAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_dropdown_item_1line,modes);
+        modesAdapter.setDropDownViewResource(android.R.layout.simple_list_item_activated_1);
+        spinnerModes.setAdapter(modesAdapter);
+        spinnerModes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tvMode.setText(adapterView.getItemAtPosition(i).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                tvMode.setText("Choose an option");
             }
         });
 

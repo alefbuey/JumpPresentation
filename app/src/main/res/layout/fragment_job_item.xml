@@ -15,13 +15,16 @@
            android:id="@+id/im_photoProfile"
            android:layout_width="50dp"
            android:layout_height="50dp"
-           android:src="@drawable/ph_profile"
+           android:src="@drawable/ic_person_profile"
            app:layout_constraintLeft_toLeftOf="parent"
            app:layout_constraintTop_toTopOf="parent"
            android:layout_marginTop="10dp"
            android:layout_marginLeft="20dp"
-           app:civ_border_width="2dp"
-           app:civ_border_color="#FF000000"/>
+           />
+
+
+      <!-- app:civ_border_width="2dp"
+       app:civ_border_color="#FF000000"-->
 
        <TextView
            android:id="@+id/tv_profileName"
