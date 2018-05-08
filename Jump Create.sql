@@ -23,16 +23,12 @@ CREATE TABLE ChatLine (Id SERIAL NOT NULL, IdChat int4 NOT NULL, IdUser int4 NOT
 CREATE TABLE Comment (Id SERIAL NOT NULL, IdJob int4 NOT NULL, IdUser int4 NOT NULL, IdCommentParent int4 DEFAULT 0 NOT NULL, Description varchar(255), "Date" timestamp, PRIMARY KEY (Id));
 CREATE TABLE Employee (Id int4 NOT NULL, Ranking numeric(2, 1) NOT NULL, NumbJobsDone int4, PRIMARY KEY (Id));
 CREATE TABLE Employee_TagJump (IdEmployee int4 NOT NULL, IdTag int4 NOT NULL, PRIMARY KEY (IdEmployee, IdTag));
-CREATE TABLE EmployeeJob (IdEmployee int4 NOT NULL, IdJob int4 NOT NULL, RankErE numeric(2, 1), RankEEr numeric(2, 1), Salary numeric(10, 2) NOT NULL, CounterOfer numeric(10, 2), State int2 NOT NULL, PRIMARY KEY (IdEmployee, IdJob));
+CREATE TABLE EmployeeJob (IdEmployee int4 NOT NULL, IdJob int4 NOT NULL, RankErE numeric(2, 1), RankEEr numeric(2, 1), Salary numeric(9, 2) NOT NULL, CounterOfer numeric(9, 2), State int4 NOT NULL, PRIMARY KEY (IdEmployee, IdJob));
 CREATE TABLE EmployeeState (id SERIAL NOT NULL, description varchar(100) NOT NULL, PRIMARY KEY (id));
-CREATE TABLE Employer (Id int4 NOT NULL, Ranking int4 NOT NULL, SpentAmount numeric(7, 2) NOT NULL, JobsPosted int4 NOT NULL, PRIMARY KEY (Id));
-CREATE TABLE FavoritesJobs (IdEmployee int4 NOT NULL, IdJob int4 NOT NULL, PRIMARY KEY (IdEmployee, IdJob));
+CREATE TABLE Employer (Id int4 NOT NULL, Ranking numeric(2, 1) NOT NULL, SpentAmount numeric(7, 2) NOT NULL, JobsPosted int4 NOT NULL, PRIMARY KEY (Id));
+CREATE TABLE FavoriteJobs (IdEmployee int4 NOT NULL, IdJob int4 NOT NULL, PRIMARY KEY (IdEmployee, IdJob));
 CREATE TABLE Followers (IdFollower int4 NOT NULL, IdFollowed int4 NOT NULL, PRIMARY KEY (IdFollower, IdFollowed));
-<<<<<<< HEAD
-CREATE TABLE Job (Id SERIAL NOT NULL, IdEmployer int4 NOT NULL, Mode int4 NOT NULL, State int4 NOT NULL, IdLocation int4 NOT NULL, Title varchar(100) NOT NULL, Description varchar(500) NOT NULL, JobCost numeric(9, 2) NOT NULL, DatePosted date NOT NULL, DateStart date NOT NULL, DateEnd date NOT NULL, DatePostEnd date NOT NULL, AvailablePercentage int4 NOT NULL, NumberApplicants int4 DEFAULT 1 NOT NULL, PRIMARY KEY (Id));
-=======
 CREATE TABLE Job (Id SERIAL NOT NULL, IdEmployer int4 NOT NULL, Mode int4 NOT NULL, State int2 NOT NULL, IdLocation int4, Title varchar(100) NOT NULL, Description varchar(500) NOT NULL, JobCost numeric(10, 2) NOT NULL, JobCostCovered numeric(10, 2) NOT NULL, DatePosted date NOT NULL, DateStart date NOT NULL, DateEnd date, DatePostEnd date NOT NULL, NumberVacancies int2 DEFAULT 1 NOT NULL, PRIMARY KEY (Id));
->>>>>>> master
 CREATE TABLE Job_TagJump (IdJob int4 NOT NULL, IdTag int4 NOT NULL, PRIMARY KEY (IdJob, IdTag));
 CREATE TABLE JobAddress (IdJob int4 NOT NULL, Direction int4 NOT NULL, Latitude numeric(10, 8) NOT NULL, Longitude numeric(10, 8) NOT NULL, PRIMARY KEY (IdJob));
 CREATE TABLE JobMode (Id SERIAL NOT NULL, Mode varchar(20) NOT NULL, PRIMARY KEY (Id));
@@ -41,12 +37,14 @@ CREATE TABLE JobState (Id SERIAL NOT NULL, State varchar(30) NOT NULL, PRIMARY K
 CREATE TABLE Location (Id SERIAL NOT NULL, Country varchar(30) NOT NULL, City varchar(30) NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE NationalIdentifierType (id SERIAL NOT NULL, description varchar(100) NOT NULL, PRIMARY KEY (id));
 CREATE TABLE PaypalAccount (Id int4 NOT NULL, IdUser int4 NOT NULL, Email varchar(25), PRIMARY KEY (Id, IdUser));
+CREATE TABLE Preferences (idTag int4 NOT NULL, IdUser int4 NOT NULL, PRIMARY KEY (idTag, IdUser));
 CREATE TABLE TagJump (Id SERIAL NOT NULL, Name varchar(50) NOT NULL, Description varchar(100), CategoryId int4 NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE TransactionJump (id SERIAL NOT NULL, idUser int4 NOT NULL, Idtype int4 NOT NULL, PRIMARY KEY (id));
 CREATE TABLE TransactionType (id SERIAL NOT NULL, name int4 NOT NULL, description int4 NOT NULL, PRIMARY KEY (id));
-CREATE TABLE UserJump (Id SERIAL NOT NULL, IdLocation int4, IdState int2, TypeNationalIdentifier int4, NationalIdentifier int4 UNIQUE, Name varchar(30) NOT NULL, LastName varchar(30) NOT NULL, Email varchar(30) NOT NULL UNIQUE, Password varchar(15) NOT NULL, BirthDate date NOT NULL, Direction varchar(255), Gender char(1) NOT NULL, Nationality varchar(30), AvailableMoney numeric(10, 2), Nonce varchar(10) NOT NULL UNIQUE, PRIMARY KEY (Id));
-CREATE TABLE UserStaff (IdUser int4 NOT NULL, About varchar(500) NOT NULL, PhotoPath text NOT NULL, Cellphone varchar(20) NOT NULL, Image bytea NOT NULL, PRIMARY KEY (IdUser));
-CREATE TABLE UserState (Id SERIAL NOT NULL, State varchar(30) NOT NULL, PRIMARY KEY (Id));
+CREATE TABLE UserJump (Id SERIAL NOT NULL, IdLocation int4, IdState int4, TypeNationalIdentifier int4, NationalIdentifier int4 UNIQUE, Name varchar(30) NOT NULL, LastName varchar(30) NOT NULL, Email varchar(30) NOT NULL UNIQUE, Password varchar(255) NOT NULL, BirthDate date NOT NULL, Direction varchar(255), Gender char(1) NOT NULL, Nationality varchar(30), AvailableMoney numeric(9, 2), Nonce varchar(255) NOT NULL UNIQUE, rank numeric(2, 1), PRIMARY KEY (Id));
+CREATE TABLE UserStaff (IdUser int4 NOT NULL, About varchar(500) NOT NULL, PhotoPath varchar(225) NOT NULL, Cellphone varchar(20) NOT NULL, PRIMARY KEY (IdUser));
+CREATE TABLE UserState (Id SERIAL NOT NULL, State varchar(10) NOT NULL, PRIMARY KEY (Id));
+
 
 
 
@@ -76,11 +74,7 @@ ALTER TABLE Employee_TagJump ADD CONSTRAINT FKEmployee_T803399 FOREIGN KEY (IdTa
 ALTER TABLE Employer ADD CONSTRAINT FKEmployer996969 FOREIGN KEY (Id) REFERENCES UserJump (Id);
 ALTER TABLE Job ADD CONSTRAINT FKJob21280 FOREIGN KEY (Mode) REFERENCES JobMode (Id);
 ALTER TABLE Job ADD CONSTRAINT FKJob218444 FOREIGN KEY (State) REFERENCES JobState (Id);
-<<<<<<< HEAD
 ALTER TABLE Job ADD CONSTRAINT FKJob67976 FOREIGN KEY (IdEmployer) REFERENCES Employer (Id);
-=======
-ALTER TABLE Job ADD CONSTRAINT FKJob901379 FOREIGN KEY (IdEmployer) REFERENCES Employer (Id);
->>>>>>> master
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo204629 FOREIGN KEY (IdEmployee) REFERENCES Employee (Id);
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo483457 FOREIGN KEY (IdJob) REFERENCES Job (Id);
 ALTER TABLE Job_TagJump ADD CONSTRAINT FKJob_TagJum687162 FOREIGN KEY (IdJob) REFERENCES Job (Id);
@@ -97,12 +91,15 @@ ALTER TABLE ChatLine ADD CONSTRAINT FKChatLine359812 FOREIGN KEY (IdUser) REFERE
 ALTER TABLE TagJump ADD CONSTRAINT FKTagJump445836 FOREIGN KEY (CategoryId) REFERENCES Category (Id);
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo623179 FOREIGN KEY (State) REFERENCES EmployeeState (id);
 ALTER TABLE UserJump ADD CONSTRAINT FKUserJump746039 FOREIGN KEY (TypeNationalIdentifier) REFERENCES NationalIdentifierType (id);
-ALTER TABLE FavoritesJobs ADD CONSTRAINT FKFavoritesJ937340 FOREIGN KEY (IdEmployee) REFERENCES Employee (Id);
-ALTER TABLE FavoritesJobs ADD CONSTRAINT FKFavoritesJ658512 FOREIGN KEY (IdJob) REFERENCES Job (Id);
+ALTER TABLE FavoriteJobs ADD CONSTRAINT FKFavoriteJo413616 FOREIGN KEY (IdEmployee) REFERENCES Employee (Id);
+ALTER TABLE FavoriteJobs ADD CONSTRAINT FKFavoriteJo134788 FOREIGN KEY (IdJob) REFERENCES Job (Id);
 ALTER TABLE Followers ADD CONSTRAINT FKFollowers802750 FOREIGN KEY (IdFollower) REFERENCES UserJump (Id);
 ALTER TABLE Followers ADD CONSTRAINT FKFollowers802736 FOREIGN KEY (IdFollowed) REFERENCES UserJump (Id);
 ALTER TABLE TransactionJump ADD CONSTRAINT FKTransactio399029 FOREIGN KEY (Idtype) REFERENCES TransactionType (id);
 ALTER TABLE JobPhotos ADD CONSTRAINT FKJobPhotos830987 FOREIGN KEY (IdJob) REFERENCES Job (Id);
+ALTER TABLE Preferences ADD CONSTRAINT FKPreference834315 FOREIGN KEY (idTag) REFERENCES TagJump (Id);
+ALTER TABLE Preferences ADD CONSTRAINT FKPreference569715 FOREIGN KEY (IdUser) REFERENCES UserJump (Id);
+
 
 
 
@@ -164,12 +161,12 @@ insert into NationalIdentifierType(description) values
 ('Identification Card'),
 ('Passport');
 
-insert into UserJump(id,idLocation,idstate,typeNationalIdentifier,nationalidentifier,name,lastname,email,password,birthdate,direction,gender,nationality,availablemoney,nonce) values
-(1,1,1,1,'123456789','Fernanda','Zapata','ferchz123@gmail.com','f123','1996-04-25','Quicentro Sur','F','Ecuadorian',1000.00,'A1H3F'),
-(2,1,2,1,'789465198','Camilo','Guitierrez','camilo566@gmail.com','c566','1998-04-25','Alameda','M','Ecuadorian',500.00,'W7G3R'),
-(3,1,3,1,'516549716','Laura','Rivera','laur894@gmail.com','l894','1995-03-21','Amaguaña','F','Ecuadorian',20.00,'T9K4I'),
-(4,2,1,2,'198952358','Enrique','Rivera','erivera879@gmail.com','e879','2000-05-17','Central Park','M','American',50.00,'U9D0E'),
-(5,3,1,1,'161698726','Jaime','Alban','jaimealba451@gmail.com','j451','1996-07-21','Iglesia de Veracruz','M','Colombian',700.00,'G79W5E');
+insert into UserJump(idLocation,idstate,typeNationalIdentifier,nationalidentifier,name,lastname,email,password,birthdate,direction,gender,nationality,availablemoney,nonce,rank) values
+(1,1,1,'123456789','Fernanda','Zapata','ferchz123@gmail.com','f123','1996-04-25','Quicentro Sur','F','Ecuadorian',1000.00,'A1H3F',4.5),
+(1,2,1,'789465198','Camilo','Guitierrez','camilo566@gmail.com','c566','1998-04-25','Alameda','M','Ecuadorian',500.00,'W7G3R',2.3),
+(1,3,1,'516549716','Laura','Rivera','laur894@gmail.com','l894','1995-03-21','Amaguaña','F','Ecuadorian',20.00,'T9K4I',3.5),
+(2,1,2,'198952358','Enrique','Rivera','erivera879@gmail.com','e879','2000-05-17','Central Park','M','American',50.00,'U9D0E',4.7),
+(3,1,1,'161698726','Jaime','Alban','jaimealba451@gmail.com','j451','1996-07-21','Iglesia de Veracruz','M','Colombian',700.00,'G79W5E',4.0);
 
 insert into Employee values
 (1,4.5,8),
@@ -187,22 +184,21 @@ insert into Employer values
 
 insert into jobState values 
 (default, 'Posted'),
-(default, 'Posted_InCourse'),
+(default, 'PostedInCourse'),
 (default, 'InCourse'),
 (default, 'FinishedNoPay'),
 (default, 'Paid');
 
 
 insert into jobmode values
-(default, 'Single'),
-(default, 'Single_Physical'),
-(default, 'Team'),
-(default, 'Team_Physical');
+(default, 'Physical'),
+(default, 'Virtual');
 
 insert into job values
 (default, 1, 1,1,1,'Web Page Development','No description yet', 10000,5000, '2018-04-24','2018-04-30','2018-09-30','2018-04-29',1),
-(default, 2, 3,1,2,'Database design','No description yet', 100,50, '2018-03-24','2018-05-30','2018-06-30','2018-05-15',3),
+(default, 2, 2,1,2,'Database design','No description yet', 100,50, '2018-03-24','2018-05-30','2018-06-30','2018-05-15',3),
 (default, 3, 2,1,3,'Walking my dog','Just walk my dog!', 10,10, '2018-04-24','2018-04-26','2018-04-26','2018-04-25',1);
+
 
 insert into employeestate values 
 (default, 'Applying'),
@@ -211,13 +207,10 @@ insert into employeestate values
 insert into employeejob values
 (4,2,null,null,50,null,1);
 
-insert into favoritesjobs values
+insert into favoritejobs values
 (1,1),
 (1,2),
 (1,3);
-
-
-select * from tagJump
 
 insert into category (nombre, description) values
 ('Programming', ''),

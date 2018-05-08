@@ -111,7 +111,7 @@ public class jobItem extends Fragment{
                 try {
                     JSONObject dataJob = jsonObject.getJSONObject("dataJob");
                     JSONObject dataUser = jsonObject.getJSONObject("dataUser");
-                    JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
+                  //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
 
 
                     tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));

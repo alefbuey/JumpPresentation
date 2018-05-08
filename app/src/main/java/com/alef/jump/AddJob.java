@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -39,13 +40,15 @@ public class AddJob extends Activity {
     EditText etTitle, etDescription, etGenAmnt, etCurrAmnt, etDateStrt, etDateEnd,
             etDateLimAppl, etNumVac;
 
-    TextView tvMode;
+    RadioButton rbPhysical, rbVirtual;
 
     Button btnPrev, btnNext, btnDone;
 
     ViewFlipper vfAddJob;
 
-    Spinner spinnerModes;
+    String jobMode;
+
+    final List<String> modes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,8 @@ public class AddJob extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job);
 
-        spinnerModes = findViewById(R.id.sp_Mode);
-
         etTitle = findViewById(R.id.et_Title);
         etDescription = findViewById(R.id.et_Desc);
-        tvMode = findViewById(R.id.tv_Mode);
         etGenAmnt = findViewById(R.id.et_GenAmnt);
         etCurrAmnt = findViewById(R.id.et_CurrAmnt);
 
@@ -77,6 +77,9 @@ public class AddJob extends Activity {
         btnDone = findViewById(R.id.btn_Done);
 
         vfAddJob = findViewById(R.id.vf_AddJob);
+
+        rbPhysical = findViewById(R.id.rb_Physical);
+        rbVirtual = findViewById(R.id.rb_Virtual);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,9 +125,10 @@ public class AddJob extends Activity {
 
                 try {
                     jobData.put("idemployer","1");
-                    jobData.put("mode", tvMode.getText().toString());
-                    jobData.put("state","1");
-                   // jobData.put("idlocation","1");
+                   // jobData.put("mode", jobMode);
+                    jobData.put("mode", jobMode);
+                    jobData.put("state","Posted");
+                    jobData.put("idlocation","1");
                     jobData.put("title", etTitle.getText().toString());
                     jobData.put("description", etDescription.getText().toString());
                     jobData.put("jobcost",etGenAmnt.getText().toString());
@@ -157,7 +161,7 @@ public class AddJob extends Activity {
 
         /*Extraccion de los modos de trabajo*/
 
-        final List<String> modes = new ArrayList<>();
+
 
         GetRequest getJobModes = new GetRequest() {
             @Override
@@ -180,22 +184,6 @@ public class AddJob extends Activity {
 
         getJobModes.getJsonArray(getApplicationContext(),Constants.getJobModeRead());
 
-
-        ArrayAdapter<String> modesAdapter = new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_dropdown_item_1line,modes);
-        modesAdapter.setDropDownViewResource(android.R.layout.simple_list_item_activated_1);
-        spinnerModes.setAdapter(modesAdapter);
-        spinnerModes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                tvMode.setText(adapterView.getItemAtPosition(i).toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                tvMode.setText("Choose an option");
-            }
-        });
-
     }
 
 
@@ -213,6 +201,27 @@ public class AddJob extends Activity {
     }
 
 
+    public void onRadioButtonClick(View view) {
+
+        // Is the button now checked?
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // hacemos un case con lo que ocurre cada vez que pulsemos un botón
+
+        switch(view.getId()) {
+            case R.id.rb_Physical:
+                if (checked)
+                    jobMode = "Physical";
+                    rbVirtual.setChecked(false);
+                    break;
+            case R.id.rb_Virtual:
+                if (checked)
+                    jobMode = "Virtual";
+                    rbPhysical.setChecked(false);
+                break;
+        }
+    }
 
 
 
