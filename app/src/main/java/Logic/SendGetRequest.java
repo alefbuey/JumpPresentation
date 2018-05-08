@@ -13,9 +13,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import People.User;
 
-public class SendGetRequest extends AsyncTask<String, Void, String> {
+public abstract class SendGetRequest extends AsyncTask<String, Void, String> {
 
     private static final String TAG = SendGetRequest.class.getSimpleName();
 
@@ -55,7 +54,7 @@ public class SendGetRequest extends AsyncTask<String, Void, String> {
 
 
     @Override
-    protected void onPostExecute(String response) {}
+    protected abstract void onPostExecute(String response);
 
 
     private String convertStreamToString(InputStream in) {
@@ -78,7 +77,4 @@ public class SendGetRequest extends AsyncTask<String, Void, String> {
         }
         return sb.toString();
     }
-
-
-
 }

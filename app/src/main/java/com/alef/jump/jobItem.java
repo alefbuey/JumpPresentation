@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import Logic.Constants;
 import Logic.GetRequest;
+import Logic.SendGetRequest;
 
 public class jobItem extends Fragment{
 
@@ -104,14 +105,16 @@ public class jobItem extends Fragment{
             }
         });
 
-
-        GetRequest testReqJob = new GetRequest() {
+        @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(getActivity(), Constants.getJobRead()+"?id="+id) {
             @Override
-            public void procesarRespuesta(JSONObject jsonObject) {
+            protected void onPostExecute(String response) {
+
+                JSONObject jsonObject = null;
                 try {
+                    jsonObject = new JSONObject(response);
                     JSONObject dataJob = jsonObject.getJSONObject("dataJob");
                     JSONObject dataUser = jsonObject.getJSONObject("dataUser");
-                  //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
+                    //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
 
 
                     tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
@@ -119,29 +122,19 @@ public class jobItem extends Fragment{
                     tvJobCost.setText(dataJob.getString("jobcost"));
                     tvNumDays.setText(dataJob.getString("dateposted"));
 
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
-
-            @Override
-            public void procesarRespuesta(JSONArray jsonArray) {
-
-            }
         };
 
         if(id > 0){
-            testReqJob.getJsonObject(getActivity(), Constants.getJobRead()+"?id="+id);
+            sendGetRequest.execute();
             return view;
         }else{
             return view;
         }
-
-
-
 
     }
 
