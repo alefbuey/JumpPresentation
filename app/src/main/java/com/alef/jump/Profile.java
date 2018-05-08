@@ -36,7 +36,7 @@ public class Profile extends AppCompatActivity {
 
     //Variables de informacion
     ImageView ivProfile;
-    TextView tvName, tvLastName;
+    TextView tvName, tvLastName, tvRank;
     User user;
 
     //
@@ -53,14 +53,14 @@ public class Profile extends AppCompatActivity {
         tlProfile.setupWithViewPager(vpProfile);
 
         //Variables de informacion
-//        user = (User) getIntent().getSerializableExtra("user");
-//        tvName = (TextView) findViewById(R.id.tvName);
-//        tvLastName = (TextView) findViewById(R.id.tvLastName);
-//
-//        //SetText
-//        tvName.setText(user.getName());
-//        tvLastName.setText(user.getLastname());
-
+        user = (User) getIntent().getSerializableExtra("user");
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvLastName = (TextView) findViewById(R.id.tvLastName);
+        tvRank = (TextView) findViewById(R.id.tvRank);
+        //SetText
+        tvName.setText(user.getName());
+        tvLastName.setText(user.getLastname());
+        tvRank.setText(user.getRank());
         ivProfile = (ImageView) findViewById(R.id.ivProfile);
     }
 
@@ -88,10 +88,19 @@ public class Profile extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ProfileGeneral(), "General");
+        ProfileGeneral profile = new ProfileGeneral();
+        sendInformation(profile);
+        adapter.addFragment(profile, "General");
         adapter.addFragment(new ProfileMyJobs(), "My jobs");
         adapter.addFragment(new ProfileMyBusiness(), "Business");
         viewPager.setAdapter(adapter);
+    }
+
+    public void sendInformation(ProfileGeneral profileGeneral){
+        Bundle bundle = new Bundle();
+        User user = (User) getIntent().getSerializableExtra("user");
+        bundle.putSerializable("user",user);
+        profileGeneral.setArguments(bundle);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
