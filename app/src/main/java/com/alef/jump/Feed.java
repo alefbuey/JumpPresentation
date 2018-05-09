@@ -30,34 +30,6 @@ import People.User;
 public class Feed extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-
-    LinearLayout container;
-    private TextView mTextMessage;
-
-    ViewPager viewPager;
-
-   /* private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                 //   mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                   // mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };*/
-
-
-
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +38,8 @@ public class Feed extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        mTextMessage = findViewById(R.id.message);
         BottomNavigationView bottomBar = findViewById(R.id.navigation);
-        //bottomBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        bottomBar.setOnNavigationItemSelectedListener(OnNavigationItemSelectedListener);
         
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -81,64 +50,13 @@ public class Feed extends AppCompatActivity
         NavigationView lateralBar = findViewById(R.id.nav_view);
         lateralBar.setNavigationItemSelectedListener(this);
 
-
-        //Generar jobItems
-
-        container = findViewById(R.id.ll_containerJobParent);
-
-        LinearLayout pseudoCont = new LinearLayout(this);
-        pseudoCont.setOrientation(LinearLayout.VERTICAL);
-        pseudoCont.setId(12345);
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.ll_containerJobParent, new JobContainer());
+        ft.replace(R.id.ll_containerFrag, new JobContainer());
         ft.commit();
 
-       /* getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(1), "someTag1").commit();
-        getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(2), "someTag2").commit();
-        getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(3), "someTag2").commit();
-*/
-        //container.addView(pseudoCont);
-
-        viewPager = findViewById(R.id.vp_Feed);
-        setupViewPager(viewPager);
-
-        bottomBar.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.navigation_home:
-                                viewPager.setCurrentItem(0);
-                                break;
-                            case R.id.navigation_favorites:
-                                viewPager.setCurrentItem(1);
-                                break;
-                            case R.id.navigation_notifications:
-                                viewPager.setCurrentItem(2);
-                                break;
-                            case R.id.navigation_messages:
-                                viewPager.setCurrentItem(3);
-                                break;
-
-                        }
-                        return false;
-                    }
-                });
-
-
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -149,12 +67,10 @@ public class Feed extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_settings) {
             return true;
         }
@@ -169,74 +85,55 @@ public class Feed extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-//            User user = (User) getIntent().getSerializableExtra("user");
-
             Intent intent = new Intent(getApplicationContext(),Profile.class);
-//            intent.putExtra("user",user);
             startActivity(intent);
-
-        } else if (id == R.id.nav_myJobs) {
-
-        } else if (id == R.id.nav_myBusiness) {
-
-        } else if (id == R.id.nav_addJob) {
+        }else if (id == R.id.nav_myJobs) {
+        }else if (id == R.id.nav_myBusiness) {
+        }else if (id == R.id.nav_addJob) {
             Intent intent = new Intent(getApplicationContext(), AddJob.class);
             startActivity(intent);
-
-        } else if (id == R.id.nav_settings) {
-
-        } else if (id == R.id.nav_logout) {
-
+        }else if (id == R.id.nav_settings) {
+        }else if (id == R.id.nav_logout) {
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private void setupViewPager(ViewPager viewPager)
-    {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        JobContainer jobContainer = new JobContainer();
-        FavJob favJob = new FavJob();
-        Notifications notifications = new Notifications();
-        Messages messages = new Messages();
-        adapter.addFragment(jobContainer,"Feed");
-        adapter.addFragment(favJob,"Favorites");
-        adapter.addFragment(notifications,"Notifications");
-        adapter.addFragment(messages,"Messages");
-        viewPager.setAdapter(adapter);
-    }
 
 
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
+    private BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentTransaction ft;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.ll_containerFrag, new JobContainer());
+                    ft.commit();
+                    return true;
+                case R.id.navigation_favorites:
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.ll_containerFrag, new FavJob());
+                    ft.commit();
+                    return true;
+                case R.id.navigation_notifications:
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.ll_containerFrag, new Notifications());
+                    ft.commit();
+                    return true;
+                case R.id.navigation_messages:
+                    ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.ll_containerFrag, new Messages());
+                    ft.commit();
+                    return true;
 
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
+            }
+            return false;
         }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
+    };
 
 }
