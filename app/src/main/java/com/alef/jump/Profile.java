@@ -1,6 +1,5 @@
 package com.alef.jump;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
@@ -10,29 +9,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Constants;
-import Logic.GetRequestUser;
-import Logic.SendGetRequest;
 import People.User;
 
 public class Profile extends AppCompatActivity {
@@ -65,6 +49,8 @@ public class Profile extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         tvLastName = findViewById(R.id.tvLastName);
 
+        ivProfile = findViewById(R.id.ivProfile);
+
         //
         user = (User) getIntent().getSerializableExtra("user");
 
@@ -84,6 +70,7 @@ public class Profile extends AppCompatActivity {
 
     public void onClickPhoto(View v) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //takePictureIntent.putExtra("user",user);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }

@@ -7,14 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
@@ -32,10 +26,10 @@ public class ProfileMyBusiness extends Fragment {
 
     private static String TAG = "ProfileMyBusiness";
     private float[] rankData = {4.5f,4.2f,4.0f,3.7f};
-    private int[] numeroDeTrabajosData = {7,6,2,1};
-    private String[] jobsData = {"Programming","Graphic Design","Art","Teaching"};
+    private int[] numeroDeTrabajosData = {9,6,5,3};
+    private String[] jobsData = {"Haskell","Artificial Intelligence","C++","Teaching"};
 
-    com.github.mikephil.charting.charts.PieChart pcMyJobs;
+    PieChart pcMyJobs;
 
     public ProfileMyBusiness() {
     }
@@ -53,7 +47,7 @@ public class ProfileMyBusiness extends Fragment {
                              Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_profile_my_jobs, container, false);
 
-        com.github.mikephil.charting.components.Description description = new Description();
+        Description description = new Description();
         description.setTextColor(ColorTemplate.VORDIPLOM_COLORS[2]);
         description.setText("");
 

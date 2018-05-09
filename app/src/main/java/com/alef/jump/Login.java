@@ -40,40 +40,42 @@ public class Login extends AppCompatActivity {
         @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
             @Override
             protected void onPostExecute(String response) {
-                Log.e(TAG,response);
-                if(User.checkPassword(response)){
-                    JSONObject jsonObject = null;
+                if(response != null) {
+                    if (User.checkPassword(response)) {
+                        JSONObject jsonObject = null;
 
-                    User user = null;
+                        User user = null;
 
-                    try {
-                        jsonObject = new JSONObject(response);
-                        JSONObject jsonUser = (JSONObject) jsonObject.getJSONObject("user");
-                        Log.e(TAG,jsonUser.toString());
+                        try {
+                            jsonObject = new JSONObject(response);
+                            JSONObject jsonUser = (JSONObject) jsonObject.getJSONObject("user");
+                            Log.e(TAG, jsonUser.toString());
 
-                        user = new User(
-                                jsonUser.getString("id"),
-                                jsonUser.getString("email"),
-                                jsonUser.getString("name"),
-                                jsonUser.getString("lastname")
-                        );
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                            user = new User(
+                                    jsonUser.getString("id"),
+                                    jsonUser.getString("email"),
+                                    jsonUser.getString("name"),
+                                    jsonUser.getString("lastname")
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Log.e(TAG, user.toString());
+                        Intent i = new Intent(getApplicationContext(), Feed.class);
+                        i.putExtra("user", user);
+                        startActivity(i);
+                    } else {
+                        try {
+                            JSONObject jsonError = new JSONObject(response);
+                            Toast.makeText(getApplicationContext(), jsonError.getString("mensaje"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-
-                    Log.e(TAG,user.toString());
-                    Intent i = new Intent(getApplicationContext(),Feed.class);
-                    i.putExtra("user",user);
-                    startActivity(i);
                 }else{
-                    try {
-                        JSONObject jsonError = new JSONObject(response);
-                        Toast.makeText(getApplicationContext(),jsonError.getString("mensaje"),Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    Toast.makeText(getApplicationContext(),"The json is not received",Toast.LENGTH_LONG).show();
                 }
-
             }
         };
 

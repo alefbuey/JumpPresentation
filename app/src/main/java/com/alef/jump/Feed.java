@@ -12,19 +12,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import Logic.Constants;
-import Logic.GetRequestUser;
+import Logic.SendGetRequest;
 import People.User;
 
 public class Feed extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, jobItem.OnFragmentInteractionListener{
 
-
+    String TAG = "Feed";
     LinearLayout container;
     private TextView mTextMessage;
 
@@ -134,9 +139,60 @@ public class Feed extends AppCompatActivity
         if (id == R.id.nav_profile) {
             User user = (User) getIntent().getSerializableExtra("user");
             String url = Constants.getSelectUserProfile() + "?email="+user.getEmail();
-            GetRequestUser getRequestUser = new GetRequestUser(url,getApplicationContext());
-            getRequestUser.setOption(2);
-            getRequestUser.execute();
+
+            @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
+                @Override
+                protected void onPostExecute(String response) {
+                    if(response!=null) {
+                        JSONObject jsonObject = null;
+
+                        User userToPass = null;
+
+                        try {
+                            jsonObject = new JSONObject(response);
+                            JSONObject jsonUser = (JSONObject) jsonObject.getJSONObject("user");
+                            JSONObject jsonUserStaff = (JSONObject) jsonObject.getJSONObject("userStaff");
+                            JSONObject jsonUserState = (JSONObject) jsonObject.getJSONObject("userState");
+                            JSONObject jsonUserNIType = (JSONObject) jsonObject.getJSONObject("userNIType");
+                            JSONObject jsonUserLocation = (JSONObject) jsonObject.getJSONObject("userLocation");
+                            JSONObject jsonUserPreferences = (JSONObject) jsonObject.getJSONObject("userPreferences");
+                            Log.e(TAG, jsonUser.toString());
+
+                            userToPass = new User(
+                                    jsonUser.getString("id"),
+                                    jsonUser.getString("email"),
+                                    jsonUser.getString("name"),
+                                    jsonUser.getString("lastname"),
+                                    jsonUserLocation.getString("country") + " - " + jsonUserLocation.getString("city"),
+                                    jsonUserState.getString("state"),
+                                    jsonUserNIType.getString("description"),
+                                    jsonUser.getString("nationalidentifier"),
+                                    jsonUser.getString("birthdate"),
+                                    jsonUser.getString("direction"),
+                                    jsonUser.getString("gender"),
+                                    jsonUser.getString("nationality"),
+                                    jsonUser.getString("availablemoney"),
+                                    jsonUser.getString("rank"),
+                                    jsonUserPreferences.getString("preferences"),
+                                    jsonUserStaff.getString("about"),
+                                    jsonUserStaff.getString("cellphone")
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Log.e(TAG, userToPass.toString());
+                        Intent i = new Intent(getApplicationContext(), Profile.class);
+                        i.putExtra("user", userToPass);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(getApplicationContext(),"The json is not received",Toast.LENGTH_LONG).show();
+                    }
+                }
+            };
+
+            sendGetRequest.execute();
+
 
         } else if (id == R.id.nav_myJobs) {
 
