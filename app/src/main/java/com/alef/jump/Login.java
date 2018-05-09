@@ -57,6 +57,14 @@ public class Login extends AppCompatActivity {
                                     jsonUser.getString("name"),
                                     jsonUser.getString("lastname")
                             );
+
+                            Globals g = Globals.getInstance();
+                            g.setId(jsonUser.getInt("id"));
+                            g.setEmail(jsonUser.getString("email"));
+                            g.setName(jsonUser.getString("name"));
+                            g.setLastName(jsonUser.getString("lastname"));
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

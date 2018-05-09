@@ -124,7 +124,7 @@ public class AddJob extends Activity {
                 JSONObject jobData= new JSONObject();
 
                 try {
-                    jobData.put("idemployer","1");
+                    jobData.put("idemployer", Globals.getInstance().getId());
                    // jobData.put("mode", jobMode);
                     jobData.put("mode", jobMode);
                     jobData.put("state","Posted");

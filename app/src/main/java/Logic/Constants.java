@@ -28,6 +28,7 @@ public class Constants {
     public static final String removeUser = ip + "/JumpWebService/Logic/User/deleteUser.php";
 
     public static final String jobRead = ip + "/JumpWebService/Logic/Work/jobRead.php";
+    public static final String jobReadMultiple = ip + "/JumpWebService/Logic/Work/jobReadMultiple.php";
     public static final String jobCreate = ip + "/JumpWebService/Logic/Work/jobCreate.php";
     public static final String jobDelete = ip + "/JumpWebService/Logic/Work/jobDelete.php";
     public static final String jobUpdate = ip + "/JumpWebService/Logic/Work/jobUpdate.php";
@@ -50,6 +51,7 @@ public class Constants {
     public static String getJobRead() {
         return jobRead;
     }
+    public static String getJobReadMultiple() {return jobReadMultiple;}
     public static String getJobCreate() {
         return jobCreate;
     }
@@ -59,7 +61,6 @@ public class Constants {
     public static String getJobUpdate() {
         return jobUpdate;
     }
-
     public static String getJobModeRead() {
         return jobModeRead;
     }

@@ -10,6 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import Logic.Constants;
+import Logic.SendGetRequest;
 
 
 public class JobContainer extends Fragment{
@@ -46,11 +54,31 @@ public class JobContainer extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        for (int i=1; i<4;i++){
-            Fragment childFragment = new jobItem(i);
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.add(R.id.ll_containerJobs,childFragment).commit();
-        }
+
+        @SuppressLint("StaticFieldLeak") SendGetRequest newReq = new SendGetRequest(Constants.getJobReadMultiple()+"?limit=10") {
+            @Override
+            protected void onPostExecute(String response) {
+                if(response!=null) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        int index = 0;
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            index = jsonArray.getJSONArray(i).getInt(0);
+                            Fragment childFragment = new jobItem(index);
+                            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                            transaction.add(R.id.ll_containerJobs, childFragment).commit();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+
+        newReq.execute();
+
     }
 
 }

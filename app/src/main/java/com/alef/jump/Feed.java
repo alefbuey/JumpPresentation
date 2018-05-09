@@ -144,6 +144,7 @@ public class Feed extends AppCompatActivity
                 }
             };
 
+
             sendGetRequest.execute();
 
 
