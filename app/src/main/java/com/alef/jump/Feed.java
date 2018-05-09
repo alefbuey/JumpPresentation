@@ -7,7 +7,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,34 +22,39 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import People.User;
 
 public class Feed extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, jobItem.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener{
 
 
     LinearLayout container;
     private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    ViewPager viewPager;
+
+   /* private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                 //   mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                   // mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    //mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;
         }
-    };
+    };*/
 
 
 
@@ -60,7 +70,7 @@ public class Feed extends AppCompatActivity
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView bottomBar = findViewById(R.id.navigation);
-        bottomBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //bottomBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,18 +84,47 @@ public class Feed extends AppCompatActivity
 
         //Generar jobItems
 
-        container = findViewById(R.id.ll_container);
+        container = findViewById(R.id.ll_containerJobParent);
 
         LinearLayout pseudoCont = new LinearLayout(this);
         pseudoCont.setOrientation(LinearLayout.VERTICAL);
         pseudoCont.setId(12345);
 
-        getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(1), "someTag1").commit();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.ll_containerJobParent, new JobContainer());
+        ft.commit();
+
+       /* getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(1), "someTag1").commit();
         getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(2), "someTag2").commit();
         getFragmentManager().beginTransaction().add(pseudoCont.getId(), jobItem.newInstance(3), "someTag2").commit();
+*/
+        //container.addView(pseudoCont);
 
-        container.addView(pseudoCont);
+        viewPager = findViewById(R.id.vp_Feed);
+        setupViewPager(viewPager);
 
+        bottomBar.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.navigation_home:
+                                viewPager.setCurrentItem(0);
+                                break;
+                            case R.id.navigation_favorites:
+                                viewPager.setCurrentItem(1);
+                                break;
+                            case R.id.navigation_notifications:
+                                viewPager.setCurrentItem(2);
+                                break;
+                            case R.id.navigation_messages:
+                                viewPager.setCurrentItem(3);
+                                break;
+
+                        }
+                        return false;
+                    }
+                });
 
 
 
@@ -155,8 +194,49 @@ public class Feed extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    private void setupViewPager(ViewPager viewPager)
+    {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        JobContainer jobContainer = new JobContainer();
+        FavJob favJob = new FavJob();
+        Notifications notifications = new Notifications();
+        Messages messages = new Messages();
+        adapter.addFragment(jobContainer,"Feed");
+        adapter.addFragment(favJob,"Favorites");
+        adapter.addFragment(notifications,"Notifications");
+        adapter.addFragment(messages,"Messages");
+        viewPager.setAdapter(adapter);
     }
+
+
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
 }

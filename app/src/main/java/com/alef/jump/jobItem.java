@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +20,9 @@ import org.json.JSONObject;
 import Logic.Constants;
 import Logic.GetRequest;
 import Logic.SendGetRequest;
+import android.support.v4.app.Fragment;
 
-public class jobItem extends Fragment{
+public class jobItem extends android.support.v4.app.Fragment {
 
     ImageView imPhotoProf, imShare, imAddFav;
     TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
@@ -108,22 +108,23 @@ public class jobItem extends Fragment{
         @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(getActivity(), Constants.getJobRead()+"?id="+id) {
             @Override
             protected void onPostExecute(String response) {
+                if(response!=null){
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = new JSONObject(response);
+                        JSONObject dataJob = jsonObject.getJSONObject("dataJob");
+                        JSONObject dataUser = jsonObject.getJSONObject("dataUser");
+                        //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
 
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(response);
-                    JSONObject dataJob = jsonObject.getJSONObject("dataJob");
-                    JSONObject dataUser = jsonObject.getJSONObject("dataUser");
-                    //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
 
+                        tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
+                        tvJobName.setText(dataJob.getString("title"));
+                        tvJobCost.setText(dataJob.getString("jobcost"));
+                        tvNumDays.setText(dataJob.getString("dateposted"));
 
-                    tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
-                    tvJobName.setText(dataJob.getString("title"));
-                    tvJobCost.setText(dataJob.getString("jobcost"));
-                    tvNumDays.setText(dataJob.getString("dateposted"));
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }

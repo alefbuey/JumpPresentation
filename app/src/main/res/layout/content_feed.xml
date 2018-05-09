@@ -19,21 +19,18 @@
         >
 
         <LinearLayout
-            android:id="@+id/ll_container"
+            android:id="@+id/ll_containerJobParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
-            <fragment
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_Feed"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.alef.jump.jobItem"
-                android:id="@+id/fr_jobItem"
-                android:layout_marginBottom="10dp"
-                android:layout_alignParentTop="true"
-                class="com.alef.jump.jobItem"
-                tools:layout="@layout/fragment_job_item" />
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+
 
 
         </LinearLayout>
