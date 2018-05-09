@@ -28,7 +28,7 @@ CREATE TABLE EmployeeState (id SERIAL NOT NULL, description varchar(100) NOT NUL
 CREATE TABLE Employer (Id int4 NOT NULL, Ranking numeric(2, 1) NOT NULL, SpentAmount numeric(7, 2) NOT NULL, JobsPosted int4 NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE FavoritesJobs (IdEmployee int4 NOT NULL, IdJob int4 NOT NULL, PRIMARY KEY (IdEmployee, IdJob));
 CREATE TABLE Followers (IdFollower int4 NOT NULL, IdFollowed int4 NOT NULL, PRIMARY KEY (IdFollower, IdFollowed));
-CREATE TABLE Job (Id SERIAL NOT NULL, IdEmployeer int4 NOT NULL, Mode int4 NOT NULL, State int4 NOT NULL, IdLocation int4 NOT NULL, Title varchar(100) NOT NULL, Description varchar(500) NOT NULL, JobCost numeric(9, 2) NOT NULL, DatePosted date NOT NULL, DateStart date NOT NULL, DateEnd date NOT NULL, DatePostEnd date NOT NULL, AvailablePercentage int4 NOT NULL, NumberApplicants int4 DEFAULT 1 NOT NULL, PRIMARY KEY (Id));
+CREATE TABLE Job (Id SERIAL NOT NULL, IdEmployer int4 NOT NULL, Mode int4 NOT NULL, State int2 NOT NULL, IdLocation int4, Title varchar(100) NOT NULL, Description varchar(500) NOT NULL, JobCost numeric(10, 2) NOT NULL, JobCostCovered numeric(10, 2) NOT NULL, DatePosted date NOT NULL, DateStart date NOT NULL, DateEnd date, DatePostEnd date NOT NULL, NumberVacancies int2 DEFAULT 1 NOT NULL, PRIMARY KEY (Id));
 CREATE TABLE Job_TagJump (IdJob int4 NOT NULL, IdTag int4 NOT NULL, PRIMARY KEY (IdJob, IdTag));
 CREATE TABLE JobAddress (IdJob int4 NOT NULL, Direction int4 NOT NULL, Latitude numeric(10, 8) NOT NULL, Longitude numeric(10, 8) NOT NULL, PRIMARY KEY (IdJob));
 CREATE TABLE JobMode (Id SERIAL NOT NULL, Mode varchar(20) NOT NULL, PRIMARY KEY (Id));
@@ -42,9 +42,8 @@ CREATE TABLE TagJump (Id SERIAL NOT NULL, Name varchar(50) NOT NULL, Description
 CREATE TABLE TransactionJump (id SERIAL NOT NULL, idUser int4 NOT NULL, Idtype int4 NOT NULL, PRIMARY KEY (id));
 CREATE TABLE TransactionType (id SERIAL NOT NULL, name int4 NOT NULL, description int4 NOT NULL, PRIMARY KEY (id));
 CREATE TABLE UserJump (Id SERIAL NOT NULL, IdLocation int4, IdState int4, TypeNationalIdentifier int4, NationalIdentifier int4 UNIQUE, Name varchar(30) NOT NULL, LastName varchar(30) NOT NULL, Email varchar(30) NOT NULL UNIQUE, Password varchar(255) NOT NULL, BirthDate date NOT NULL, Direction varchar(255), Gender char(1) NOT NULL, Nationality varchar(30), AvailableMoney numeric(9, 2), Nonce varchar(255) NOT NULL UNIQUE, rank numeric(2, 1), PRIMARY KEY (Id));
-CREATE TABLE UserStaff (IdUser int4 NOT NULL, About varchar(500) NOT NULL, PhotoPath varchar(225) NOT NULL, Cellphone varchar(20) NOT NULL, Image bytea NOT NULL, PRIMARY KEY (IdUser));
+CREATE TABLE UserStaff (IdUser int4 NOT NULL, About varchar(500) NOT NULL, Cellphone varchar(20) NOT NULL, Image bytea NOT NULL, PRIMARY KEY (IdUser));
 CREATE TABLE UserState (Id SERIAL NOT NULL, State varchar(10) NOT NULL, PRIMARY KEY (Id));
-
 
 
 
@@ -74,7 +73,7 @@ ALTER TABLE Employee_TagJump ADD CONSTRAINT FKEmployee_T803399 FOREIGN KEY (IdTa
 ALTER TABLE Employer ADD CONSTRAINT FKEmployer996969 FOREIGN KEY (Id) REFERENCES UserJump (Id);
 ALTER TABLE Job ADD CONSTRAINT FKJob21280 FOREIGN KEY (Mode) REFERENCES JobMode (Id);
 ALTER TABLE Job ADD CONSTRAINT FKJob218444 FOREIGN KEY (State) REFERENCES JobState (Id);
-ALTER TABLE Job ADD CONSTRAINT FKJob67976 FOREIGN KEY (IdEmployeer) REFERENCES Employer (Id);
+ALTER TABLE Job ADD CONSTRAINT FKJob67976 FOREIGN KEY (IdEmployer) REFERENCES Employer (Id);
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo204629 FOREIGN KEY (IdEmployee) REFERENCES Employee (Id);
 ALTER TABLE EmployeeJob ADD CONSTRAINT FKEmployeeJo483457 FOREIGN KEY (IdJob) REFERENCES Job (Id);
 ALTER TABLE Job_TagJump ADD CONSTRAINT FKJob_TagJum687162 FOREIGN KEY (IdJob) REFERENCES Job (Id);
@@ -99,6 +98,8 @@ ALTER TABLE TransactionJump ADD CONSTRAINT FKTransactio399029 FOREIGN KEY (Idtyp
 ALTER TABLE JobPhotos ADD CONSTRAINT FKJobPhotos830987 FOREIGN KEY (IdJob) REFERENCES Job (Id);
 ALTER TABLE Preferences ADD CONSTRAINT FKPreference834315 FOREIGN KEY (idTag) REFERENCES TagJump (Id);
 ALTER TABLE Preferences ADD CONSTRAINT FKPreference569715 FOREIGN KEY (IdUser) REFERENCES UserJump (Id);
+
+
 
 
 
@@ -168,6 +169,10 @@ insert into UserJump(idLocation,idstate,typeNationalIdentifier,nationalidentifie
 (2,1,2,'198952358','Enrique','Rivera','erivera879@gmail.com','e879','2000-05-17','Central Park','M','American',50.00,'U9D0E',4.7),
 (3,1,1,'161698726','Jaime','Alban','jaimealba451@gmail.com','j451','1996-07-21','Iglesia de Veracruz','M','Colombian',700.00,'G79W5E',4.0);
 
+insert into UserStaff values
+(2,'Estudie en Yachay Tech. Ingeniero gradudado con conocimientos en Programacion Web, Inteligencia Artificial. Me considero una persona capaz de tomar nuevos retos e iniciativas','0984657213',bytea('/opt/PostgreSQL/images/profile/2.jpg
+'));
+
 insert into Employee values
 (1,4.5,8),
 (2,3.5,9),
@@ -229,6 +234,9 @@ insert into tagjump (name, description, categoryid) values
 ('English tutoring', '', 3),
 ('Programming teaching', '', 3);
 
-
-select * from userjump;
+insert into preferences values
+(1,2),
+(2,2),
+(3,2),
+(4,2);
 
