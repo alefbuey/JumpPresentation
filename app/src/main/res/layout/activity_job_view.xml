@@ -7,8 +7,10 @@
     tools:context=".JobView">
 
 
-    <ImageView
-        android:id="@+id/pruebaFoto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/pruebaTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="No Text"
+        android:textSize="50dp"/>
 </android.support.constraint.ConstraintLayout>

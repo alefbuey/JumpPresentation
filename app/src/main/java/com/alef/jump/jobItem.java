@@ -32,7 +32,6 @@ public class jobItem extends android.support.v4.app.Fragment {
     boolean isFav = false;
 
     int id = 0;
-    private static final String EXTRA_ID = "IDMETA";
 
 
     public jobItem (){}
@@ -84,6 +83,7 @@ public class jobItem extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), JobView.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
