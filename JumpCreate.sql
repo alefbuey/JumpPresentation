@@ -240,7 +240,3 @@ insert into preferences values
 (3,2),
 (4,2);
 
-select tj.name,tj.categoryid
-from tagjump tj inner join (select idtag from preferences where iduser = 2) itj
-on tj.id = itj.idtag
-
