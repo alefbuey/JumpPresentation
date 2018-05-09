@@ -1,13 +1,21 @@
 package com.alef.jump;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -17,21 +25,30 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import Logic.Constants;
+import Logic.GetRequest;
+import Logic.MaskWatcher;
 import Logic.SendPostRequest;
-import People.Employer;
-import Work.Job;
 
-public class AddJob extends AppCompatActivity {
+public class AddJob extends Activity {
 
-    EditText etTitle, etDescription, etMode, etGenAmnt, etCurrAmnt, etDateStrt, etDateEnd,
+
+    EditText etTitle, etDescription, etGenAmnt, etCurrAmnt, etDateStrt, etDateEnd,
             etDateLimAppl, etNumVac;
+
+    RadioButton rbPhysical, rbVirtual;
 
     Button btnPrev, btnNext, btnDone;
 
     ViewFlipper vfAddJob;
+
+    String jobMode;
+
+    final List<String> modes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +58,18 @@ public class AddJob extends AppCompatActivity {
 
         etTitle = findViewById(R.id.et_Title);
         etDescription = findViewById(R.id.et_Desc);
-        etMode = findViewById(R.id.et_Mode);
         etGenAmnt = findViewById(R.id.et_GenAmnt);
         etCurrAmnt = findViewById(R.id.et_CurrAmnt);
+
         etDateStrt = findViewById(R.id.et_DateStrt);
+        etDateStrt.addTextChangedListener(new MaskWatcher("####-##-##"));
+
         etDateEnd = findViewById(R.id.et_DateEnd);
+        etDateEnd.addTextChangedListener(new MaskWatcher("####-##-##"));
+
         etDateLimAppl = findViewById(R.id.et_DateLimAppl);
+        etDateLimAppl.addTextChangedListener(new MaskWatcher("####-##-##"));
+
         etNumVac = findViewById(R.id.et_NumVac);
 
         btnPrev = findViewById(R.id.btn_Previous);
@@ -54,6 +77,9 @@ public class AddJob extends AppCompatActivity {
         btnDone = findViewById(R.id.btn_Done);
 
         vfAddJob = findViewById(R.id.vf_AddJob);
+
+        rbPhysical = findViewById(R.id.rb_Physical);
+        rbVirtual = findViewById(R.id.rb_Virtual);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +125,10 @@ public class AddJob extends AppCompatActivity {
 
                 try {
                     jobData.put("idemployer","1");
-                    jobData.put("mode",etMode.getText().toString());
-                    jobData.put("state","1");
-                   // jobData.put("idlocation","1");
+                   // jobData.put("mode", jobMode);
+                    jobData.put("mode", jobMode);
+                    jobData.put("state","Posted");
+                    jobData.put("idlocation","1");
                     jobData.put("title", etTitle.getText().toString());
                     jobData.put("description", etDescription.getText().toString());
                     jobData.put("jobcost",etGenAmnt.getText().toString());
@@ -125,50 +152,37 @@ public class AddJob extends AppCompatActivity {
                 }
 
 
-                /*Job newJob = new Job(
-                                    new Employer(1),
-                                    etMode.getText().toString(),
-                                    "1",
-                                    "null",
-                                    etTitle.getText().toString(),
-                                    etDescription.getText().toString(),
-                                    9999.99f,
-                                    null,
-                                    new Date(),
-                                    getDate(etDateStrt.getText().toString()),
-                                    getDate(etDateEnd.getText().toString()),
-                                    getDate(etDateLimAppl.getText().toString()),
-                                    (byte) 69,
-                                    null,
-                                    null
-                                    );
-*/
 
-/*
-                Job newJob = new Job(
-                        new Employer(1),
-                        "Single",
-                        "Posted",
-                        "Quito",
-                        "Clean House",
-                        "Nooooo",
-                        9999.99f,
-                        null,
-                        new Date(),
-                        getDate("2018-05-15"),
-                        getDate("2018-05-16"),
-                        getDate("2018-05-10"),
-                        (byte) 69,
-                        null,
-                        null
-                );
-*/
-
-
-               // newJob.createJob();
 
             }
         });
+
+
+
+        /*Extraccion de los modos de trabajo*/
+
+
+
+        GetRequest getJobModes = new GetRequest() {
+            @Override
+            public void procesarRespuesta(JSONObject jsonObject) {
+
+            }
+
+            @Override
+            public void procesarRespuesta(JSONArray jsonArray) {
+                for (int i = 0; i<jsonArray.length();i++){
+                    try {
+                        modes.add(jsonArray.getJSONObject(i).getString("mode"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+
+        getJobModes.getJsonArray(getApplicationContext(),Constants.getJobModeRead());
 
     }
 
@@ -187,6 +201,27 @@ public class AddJob extends AppCompatActivity {
     }
 
 
+    public void onRadioButtonClick(View view) {
+
+        // Is the button now checked?
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // hacemos un case con lo que ocurre cada vez que pulsemos un botón
+
+        switch(view.getId()) {
+            case R.id.rb_Physical:
+                if (checked)
+                    jobMode = "Physical";
+                    rbVirtual.setChecked(false);
+                    break;
+            case R.id.rb_Virtual:
+                if (checked)
+                    jobMode = "Virtual";
+                    rbPhysical.setChecked(false);
+                break;
+        }
+    }
 
 
 

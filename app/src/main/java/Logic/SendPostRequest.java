@@ -2,10 +2,16 @@ package Logic;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
 import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -32,15 +38,15 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
 
     protected String doInBackground(String... arg0) {
 
-        String respuesta;
+        String response;
         try {
 
             URL url = new URL(this.receiveUrl); // here is your URL path
             String message = this.receiveJSON.toString();
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(10000 /* milliseconds */);
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
             conn.setDoOutput(true);
@@ -51,18 +57,20 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
 
             OutputStream os = new BufferedOutputStream(conn.getOutputStream());;
             os.write(message.getBytes());
-            os.flush();
             os.close();
+
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            response = convertStreamToString(in);
 
             conn.disconnect();
 
-            respuesta = this.mensaje;
 
         } catch (IOException e) {
-            respuesta = "Exception: " + e.getMessage();
+            response = "Exception: " + e.getMessage();
+
         }
 
-        return respuesta;
+        return response;
     }
 
     @Override
@@ -70,5 +78,29 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
         if(respuesta!=null){
             Toast.makeText(this.context, respuesta, Toast.LENGTH_LONG).show();
         }
+    }
+
+
+
+    @NonNull
+    private String convertStreamToString(InputStream in) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append('\n');
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sb.toString();
     }
 }

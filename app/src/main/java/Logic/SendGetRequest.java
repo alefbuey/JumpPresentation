@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+
 public abstract class SendGetRequest extends AsyncTask<String, Void, String> {
 
     private static final String TAG = SendGetRequest.class.getSimpleName();
