@@ -10,16 +10,15 @@ public class Constants {
 
 
     private static final String ip = "http://192.168.88.44"; //Oscar
+    //private static final String ip = "http://192.168.10.103"; //Repetidor Oscar
     //private static final String ip = "http://192.168.10.101"; //Fernando repetidor
     //private static final String ip = "http://192.168.0.108"; //Fernando emulador
-
-
-
 
     //URLs del Web Service
 
 
     //CRU de usuario
+    public static final String selectUserProfile = ip + "/JumpWebService/Logic/User/selectUserProfile.php";
     public static final String selectUser = ip + "/JumpWebService/Logic/User/selectUser.php";
     public static final String updateUser = ip + "/JumpWebService/Logic/User/updateUser.php";
     public static final String insertUser = ip + "/JumpWebService/Logic/User/insertUser.php";
@@ -29,7 +28,9 @@ public class Constants {
     public static final String jobDelete = ip + "/JumpWebService/Logic/Work/jobDelete.php";
     public static final String jobUpdate = ip + "/JumpWebService/Logic/Work/jobUpdate.php";
 
-
+    public static String getSelectUserProfile() {
+        return selectUserProfile;
+    }
     public static String getSelectUser() {
         return selectUser;
     }

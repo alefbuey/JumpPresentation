@@ -9,34 +9,26 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Logic.Constants;
-import Logic.GetRequestUser;
 import People.User;
 
 public class Profile extends AppCompatActivity {
+
+    String TAG = "Profile";
 
     TabLayout tlProfile;
     ViewPager vpProfile;
 
     //Variables de informacion
-    ImageView ivProfile;
-    TextView tvName, tvLastName, tvRank;
+    ImageView ivProfile,ivSetting;
+    TextView tvName, tvLastName, tvRank,tvPreferences,tvLocation;
     User user;
 
     //
@@ -53,15 +45,20 @@ public class Profile extends AppCompatActivity {
         tlProfile.setupWithViewPager(vpProfile);
 
         //Variables de informacion
+        tvRank = findViewById(R.id.tvRank);
+        tvName = findViewById(R.id.tvName);
+        tvLastName = findViewById(R.id.tvLastName);
+
+        ivProfile = findViewById(R.id.ivProfile);
+
+        //
         user = (User) getIntent().getSerializableExtra("user");
-        tvName = (TextView) findViewById(R.id.tvName);
-        tvLastName = (TextView) findViewById(R.id.tvLastName);
-        tvRank = (TextView) findViewById(R.id.tvRank);
-        //SetText
+
+        tvRank.setText(user.getRank());
         tvName.setText(user.getName());
         tvLastName.setText(user.getLastname());
-        tvRank.setText(user.getRank());
-        ivProfile = (ImageView) findViewById(R.id.ivProfile);
+
+
     }
 
     //Menu desplegable
@@ -73,10 +70,19 @@ public class Profile extends AppCompatActivity {
 
     public void onClickPhoto(View v) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //takePictureIntent.putExtra("user",user);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
+
+    public void onClickSetting(View v) {
+        User user = (User) getIntent().getSerializableExtra("user");
+        Intent intent = new Intent(getApplicationContext(),ProfileSetting.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
@@ -86,6 +92,7 @@ public class Profile extends AppCompatActivity {
         }
     }
 
+    //ViewPager
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         ProfileGeneral profile = new ProfileGeneral();
