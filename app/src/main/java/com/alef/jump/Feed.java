@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import Logic.Constants;
+import Logic.GetRequestUser;
 import People.User;
 
 public class Feed extends AppCompatActivity
@@ -131,9 +133,10 @@ public class Feed extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             User user = (User) getIntent().getSerializableExtra("user");
-            Intent intent = new Intent(getApplicationContext(),Profile.class);
-            intent.putExtra("user",user);
-            startActivity(intent);
+            String url = Constants.getSelectUserProfile() + "?email="+user.getEmail();
+            GetRequestUser getRequestUser = new GetRequestUser(url,getApplicationContext());
+            getRequestUser.setOption(2);
+            getRequestUser.execute();
 
         } else if (id == R.id.nav_myJobs) {
 

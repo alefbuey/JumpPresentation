@@ -1,5 +1,6 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
@@ -11,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,21 +24,27 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import Logic.Constants;
 import Logic.GetRequestUser;
+import Logic.SendGetRequest;
 import People.User;
 
 public class Profile extends AppCompatActivity {
+
+    String TAG = "Profile";
 
     TabLayout tlProfile;
     ViewPager vpProfile;
 
     //Variables de informacion
-    ImageView ivProfile;
-    TextView tvName, tvLastName, tvRank;
+    ImageView ivProfile,ivSetting;
+    TextView tvName, tvLastName, tvRank,tvPreferences,tvLocation;
     User user;
 
     //
@@ -53,15 +61,18 @@ public class Profile extends AppCompatActivity {
         tlProfile.setupWithViewPager(vpProfile);
 
         //Variables de informacion
+        tvRank = findViewById(R.id.tvRank);
+        tvName = findViewById(R.id.tvName);
+        tvLastName = findViewById(R.id.tvLastName);
+
+        //
         user = (User) getIntent().getSerializableExtra("user");
-        tvName = (TextView) findViewById(R.id.tvName);
-        tvLastName = (TextView) findViewById(R.id.tvLastName);
-        tvRank = (TextView) findViewById(R.id.tvRank);
-        //SetText
+
+        tvRank.setText(user.getRank());
         tvName.setText(user.getName());
         tvLastName.setText(user.getLastname());
-        tvRank.setText(user.getRank());
-        ivProfile = (ImageView) findViewById(R.id.ivProfile);
+
+
     }
 
     //Menu desplegable
@@ -78,6 +89,14 @@ public class Profile extends AppCompatActivity {
         }
     }
 
+    public void onClickSetting(View v) {
+        User user = (User) getIntent().getSerializableExtra("user");
+        Intent intent = new Intent(getApplicationContext(),ProfileSetting.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
@@ -86,6 +105,7 @@ public class Profile extends AppCompatActivity {
         }
     }
 
+    //ViewPager
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         ProfileGeneral profile = new ProfileGeneral();

@@ -30,7 +30,7 @@ public class User implements Serializable {
     private String nonce;
     //Extras
     private String about;
-    private String photopath;
+    private String image;
     private String cellphone;
 
 
@@ -106,8 +106,8 @@ public class User implements Serializable {
         return about;
     }
 
-    public String getPhotopath() {
-        return photopath;
+    public String getImage() {
+        return image;
     }
 
     public String getCellphone() {
@@ -118,16 +118,31 @@ public class User implements Serializable {
         return nonce;
     }
 
-    public User(String id, String name, String lastname, String email, String birthDate, String direction, String nationality, String availableAmount, String rank) {
+    public User(String id, String email, String name, String lastname) {
         this.id = id;
+        this.email = email;
         this.name = name;
         this.lastname = lastname;
+    }
+
+    public User(String id, String email, String name, String lastname, String location, String state, String typeNationalIdentifier, String nationalIdentifier, String birthDate, String direction, String gender, String nationality, String availableAmount, String rank, String preferences, String about, String cellphone) {
+        this.id = id;
         this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+        this.location = location;
+        this.state = state;
+        this.typeNationalIdentifier = typeNationalIdentifier;
+        this.nationalIdentifier = nationalIdentifier;
         this.birthDate = birthDate;
         this.direction = direction;
+        this.gender = gender;
         this.nationality = nationality;
         this.availableAmount = availableAmount;
         this.rank = rank;
+        this.preferences = preferences;
+        this.about = about;
+        this.cellphone = cellphone;
     }
 
     public static boolean checkPassword(String userJSON){
@@ -137,7 +152,7 @@ public class User implements Serializable {
             JSONObject json = new JSONObject(userJSON);
             estado = json.getInt("estado");
         }catch (Exception e) {
-            Log.d(TAG + "->REVISANDO JSON: ", e.getMessage().toString());
+            Log.e(TAG + "->REVISANDO JSON: ", e.getMessage().toString());
         }
         if(estado==1){
             existeJSON = true;

@@ -29,25 +29,31 @@ public class ProfileGeneral extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View fragmentView = inflater.inflate(R.layout.fragment_profile_general, container, false);
         //Traer el usuario
         User user = (User) getArguments().getSerializable("user");
 
         //Identificar atributos
-        tvAbout = (TextView) getView().findViewById(R.id.tvAbout);
-        tvLocation = (TextView) getView().findViewById(R.id.tvLocation);
-        tvNationality = (TextView) getView().findViewById(R.id.tvNationality);
-        tvBirthDate = (TextView) getView().findViewById(R.id.tvBirthDate);
-        tvDirection = (TextView) getView().findViewById(R.id.tvDirection);
-        tvAvailableMoney = (TextView) getView().findViewById(R.id.tvAvailableMoney);
-        tvPreferences = (TextView) getView().findViewById(R.id.tvPreferences);
+        tvAbout = (TextView) fragmentView.findViewById(R.id.tvAbout);
+        tvLocation = (TextView) fragmentView.findViewById(R.id.tvLocation);
+        tvNationality = (TextView) fragmentView.findViewById(R.id.tvNationality);
+        tvBirthDate = (TextView) fragmentView.findViewById(R.id.tvBirthDate);
+        tvDirection = (TextView) fragmentView.findViewById(R.id.tvDirection);
+        tvAvailableMoney = (TextView) fragmentView.findViewById(R.id.tvAvailableMoney);
+        tvPreferences = (TextView) fragmentView.findViewById(R.id.tvPreferences);
 
         //Asignar valores
+        tvAbout.setText(user.getAbout());
+        tvLocation.setText(user.getLocation());
+        tvNationality.setText(user.getNationality());
         tvBirthDate.setText(user.getBirthDate());
         tvDirection.setText(user.getDirection());
+        tvAvailableMoney.setText(user.getAvailableAmount());
+        tvPreferences.setText(user.getPreferences());
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_general, container, false);
+        return fragmentView;
     }
 
 }

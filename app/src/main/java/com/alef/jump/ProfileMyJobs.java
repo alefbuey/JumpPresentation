@@ -2,7 +2,6 @@ package com.alef.jump;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,26 +32,8 @@ public class ProfileMyJobs extends Fragment {
     PieChart pcMyJobs;
 
     public ProfileMyJobs() {
-        // Required empty public constructor
     }
 
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment ProfileMyJobs.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static ProfileMyJobs newInstance(String param1, String param2) {
-//        ProfileMyJobs fragment = new ProfileMyJobs();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,14 +42,17 @@ public class ProfileMyJobs extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View fragmentView = inflater.inflate(R.layout.fragment_profile_my_jobs, container, false);
+
         Description description = new Description();
         description.setTextColor(ColorTemplate.VORDIPLOM_COLORS[2]);
         description.setText("");
 
 
-        pcMyJobs = (PieChart) getView().findViewById(R.id.pcMyJobs);
+        pcMyJobs = (PieChart) fragmentView.findViewById(R.id.pcMyJobs);
         pcMyJobs.setDescription(description);
         pcMyJobs.setRotationEnabled(true);
         pcMyJobs.setHoleRadius(50f);
@@ -102,12 +86,7 @@ public class ProfileMyJobs extends Fragment {
             }
         });
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile_my_jobs, container, false);
+        return fragmentView;
     }
 
     private void addDataSet() {
