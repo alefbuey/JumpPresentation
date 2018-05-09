@@ -77,7 +77,7 @@ public class ProfileMyBusiness extends Fragment {
 
                 float rank = rankData[pos2];
                 String job = jobsData[pos2];
-                Toast.makeText(getContext(), "Job: " + job + "\n" + "Rank: " + rank, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Category: " + job + "\n" + "Rank: " + rank, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -97,7 +97,7 @@ public class ProfileMyBusiness extends Fragment {
         }
 
         //creacion de data set
-        PieDataSet pieDataSet = new PieDataSet(Entries,"<-Jobs");
+        PieDataSet pieDataSet = new PieDataSet(Entries,"<-Categories");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
