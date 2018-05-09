@@ -1,0 +1,215 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+MERGED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/a3708659d865648cd615e6d0eb52470d/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.volley:volley:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/e6eccdc20ea2c90f44e9ea989ae57567/AndroidManifest.xml:2:1-11:12
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/2b78ae5d1968be7dacad9cf0b09a5272/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:17:1-30:12
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+	package
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:1-35:12
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:5:22-64
+uses-feature#android.hardware.camera
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:6:5-87
+	android:required
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:6:59-84
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:6:19-58
+application
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:7:5-33:19
+MERGED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/a3708659d865648cd615e6d0eb52470d/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/a3708659d865648cd615e6d0eb52470d/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.volley:volley:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/e6eccdc20ea2c90f44e9ea989ae57567/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/e6eccdc20ea2c90f44e9ea989ae57567/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/2b78ae5d1968be7dacad9cf0b09a5272/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/2b78ae5d1968be7dacad9cf0b09a5272/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:12:9-35
+	android:label
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:10:9-41
+	android:roundIcon
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:11:9-54
+	android:icon
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:9:9-43
+	android:allowBackup
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:8:9-35
+	android:theme
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:13:9-40
+activity#com.alef.jump.AddJob
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:14:9-44
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:14:19-41
+activity#com.alef.jump.Feed
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:15:9-25:20
+	android:label
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:17:13-56
+	android:theme
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:18:13-44
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:16:13-33
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:22:27-74
+activity#com.alef.jump.Register
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:26:9-46
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:26:19-43
+activity#com.alef.jump.Login
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:27:9-29:20
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:27:19-40
+activity#com.alef.jump.Profile
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:30:9-45
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:30:19-42
+activity#com.alef.jump.JobView
+ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:31:9-54
+	android:name
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml:31:19-42
+uses-sdk
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/a3708659d865648cd615e6d0eb52470d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/a3708659d865648cd615e6d0eb52470d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.volley:volley:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/e6eccdc20ea2c90f44e9ea989ae57567/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/volley-1.1.0.aar/e6eccdc20ea2c90f44e9ea989ae57567/AndroidManifest.xml:7:5-43
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/2b78ae5d1968be7dacad9cf0b09a5272/AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/2b78ae5d1968be7dacad9cf0b09a5272/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:20:5-22:41
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		ADDED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+		INJECTED from /home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/efd086ec135e3e98ec7bd0cd46aee8bb/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/8e9cc83721ec818ff2505abf4aec4c1e/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/dcb0e1227d2a626a7d7d1e1205e21605/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/b5ff20b26bd850e0a44be80f9b32d809/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/31364cfb047347c5ddf1cbf43d451573/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/027b2f41610c3cf03039d30dcaae8f68/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/0be1c5509af6b8dfc48b850579a94596/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/7a385a73b586b3ceb031c422209a2b1b/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/e4bf3aeed1607a4cac1332e42e4e788b/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/437391b612f82003625339a35c4b6f1d/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/dd0bc325c3fbff5810dd1cc337d16785/AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/anthony/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7edf1fb5fb952f4778874ffd1548440c/AndroidManifest.xml:26:13-58

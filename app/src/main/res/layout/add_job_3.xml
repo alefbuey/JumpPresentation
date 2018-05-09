@@ -1,31 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/back_color">
+
+
+
+    <TextView
+        android:id="@+id/centerV"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/center_center_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerV"/>
+
+    <TextView
+        android:id="@+id/center_center2_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/center_center_v"/>
+
+    <TextView
+        android:id="@+id/center_centeru_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/centerV"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/centerH"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/center_centerR_H"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintLeft_toLeftOf="@id/centerH"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+    <ImageView
+        android:id="@+id/iv_case"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_case"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/center_centeru_v"/>
+
+
 
 
     <EditText
         android:id="@+id/et_DateStrt"
-        android:hint="date start"
+        android:hint="Date Start:"
         android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/ic_deadline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/center_center_v"/>
 
     <EditText
         android:id="@+id/et_DateEnd"
-        android:hint="date end"
+        android:hint="Date End:"
         android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/ic_deadline"
+        app:layout_constraintTop_toBottomOf="@id/et_DateStrt"
+        app:layout_constraintBottom_toTopOf="@id/et_DateLimAppl"
+        app:layout_constraintLeft_toLeftOf="@id/et_DateStrt"/>
 
     <EditText
         android:id="@+id/et_DateLimAppl"
-        android:hint="limit date to apply"
+        android:hint="Deadline:"
         android:inputType="date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/ic_deadline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_DateStrt"
+        app:layout_constraintLeft_toLeftOf="@id/et_DateStrt"/>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
