@@ -105,7 +105,7 @@ public class jobItem extends android.support.v4.app.Fragment {
             }
         });
 
-        @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(getActivity(), Constants.getJobRead()+"?id="+id) {
+        @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(Constants.getJobRead()+"?id="+id) {
             @Override
             protected void onPostExecute(String response) {
                 if(response!=null){
@@ -152,10 +152,6 @@ public class jobItem extends android.support.v4.app.Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
 
 

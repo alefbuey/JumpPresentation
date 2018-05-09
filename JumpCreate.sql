@@ -49,6 +49,7 @@ CREATE TABLE UserState (Id SERIAL NOT NULL, State varchar(10) NOT NULL, PRIMARY 
 
 
 
+
 --Change serial with int
 ALTER TABLE Category ALTER COLUMN id TYPE int4; 
 ALTER TABLE Chat ALTER COLUMN id TYPE int4;
@@ -168,6 +169,11 @@ insert into UserJump(idLocation,idstate,typeNationalIdentifier,nationalidentifie
 (2,1,2,'198952358','Enrique','Rivera','erivera879@gmail.com','e879','2000-05-17','Central Park','M','American',50.00,'U9D0E',4.7),
 (3,1,1,'161698726','Jaime','Alban','jaimealba451@gmail.com','j451','1996-07-21','Iglesia de Veracruz','M','Colombian',700.00,'G79W5E',4.0);
 
+insert into UserStaff values
+(2,'Estudie en Yachay Tech. Ingeniero gradudado con conocimientos en Programacion Web, Inteligencia Artificial. Me considero una persona capaz de tomar nuevos retos e iniciativas','/opt/PostgreSQL/images/profile/2.jpg
+','0984657213');
+
+
 insert into Employee values
 (1,4.5,8),
 (2,3.5,9),
@@ -228,4 +234,9 @@ insert into tagjump (name, description, categoryid) values
 ('English tutoring', '', 3),
 ('Programming teaching', '', 3);
 
+insert into preferences values
+(1,2),
+(2,2),
+(3,2),
+(4,2);
 

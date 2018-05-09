@@ -1,18 +1,26 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import Logic.Constants;
-import Logic.GetRequestUser;
 import Logic.SendGetRequest;
+import People.User;
+
 
 public class Login extends AppCompatActivity {
 
+    String TAG = "Login Activity";
     EditText etEmail,etPassword;
     Button btnLogin, btnRegister;
 
@@ -20,18 +28,59 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
+        etEmail =  findViewById(R.id.etEmail);
+        etPassword =  findViewById(R.id.etPassword);
+        btnLogin =  findViewById(R.id.btnLogin);
+        btnRegister =  findViewById(R.id.btnRegister);
     }
 
     public void onClickLogin(View v) {
+        String url = Constants.getSelectUser() + "?email=" + etEmail.getText().toString() + "&password=" + etPassword.getText().toString();
 
-        GetRequestUser gru = new GetRequestUser(getApplicationContext(),Constants.getSelectUser() + "?email=" + etEmail.getText().toString() + "&password=" + etPassword.getText().toString());
-        gru.setEmail(etEmail.getText().toString());
-        gru.setOption(2);
-        gru.execute();
+        @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
+            @Override
+            protected void onPostExecute(String response) {
+                if(response != null) {
+                    if (User.checkPassword(response)) {
+                        JSONObject jsonObject = null;
+
+                        User user = null;
+
+                        try {
+                            jsonObject = new JSONObject(response);
+                            JSONObject jsonUser = (JSONObject) jsonObject.getJSONObject("user");
+                            Log.e(TAG, jsonUser.toString());
+
+                            user = new User(
+                                    jsonUser.getString("id"),
+                                    jsonUser.getString("email"),
+                                    jsonUser.getString("name"),
+                                    jsonUser.getString("lastname")
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Log.e(TAG, user.toString());
+                        Intent i = new Intent(getApplicationContext(), Feed.class);
+                        i.putExtra("user", user);
+                        startActivity(i);
+                    } else {
+                        try {
+                            JSONObject jsonError = new JSONObject(response);
+                            Toast.makeText(getApplicationContext(), jsonError.getString("mensaje"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(),"The json is not received",Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
+        sendGetRequest.execute();
+
     }
 
     public void onClickRegister(View v){

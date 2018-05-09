@@ -23,14 +23,6 @@ public class JobView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_view);
 
-        tv = findViewById(R.id.pruebaTexto);
-
-        Bundle extras = getIntent().getExtras();
-
-
-        int id = extras.getInt("id");
-        tv.setText(String.valueOf(id));
-
 
     }
 

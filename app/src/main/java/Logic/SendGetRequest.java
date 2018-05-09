@@ -1,6 +1,5 @@
 package Logic;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import java.io.BufferedInputStream;
@@ -18,11 +17,9 @@ public abstract class SendGetRequest extends AsyncTask<String, Void, String> {
 
     private static final String TAG = SendGetRequest.class.getSimpleName();
 
-    Context context;
-    String receiveUrl;
+    private String receiveUrl;
 
-    public SendGetRequest(Context context, String receiveUrl) {
-        this.context = context;
+    protected SendGetRequest(String receiveUrl) {
         this.receiveUrl = receiveUrl;
     }
     @Override
@@ -33,6 +30,8 @@ public abstract class SendGetRequest extends AsyncTask<String, Void, String> {
             URL url = new URL(this.receiveUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+            conn.setReadTimeout(7000 /* milliseconds */);
+            conn.setConnectTimeout(7000 /* milliseconds */);
             code = conn.getResponseCode();
             if(code==HttpURLConnection.HTTP_OK){
                 // read the response
