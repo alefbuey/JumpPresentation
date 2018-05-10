@@ -39,6 +39,8 @@ public class Constants {
     public static final String jobMyBusiness = ip + "/JumpWebService/Logic/Work/jobMyBusiness.php";
     public static final String jobMyFovoriteJobs = ip + "/JumpWebService/Logic/Work/jobGetFavorite.php";
     public static final String jobUpdateFavorite = ip + "/JumpWebService/Logic/Work/jobUpdateFavorite.php";
+    public static final String jobCheckFavorite = ip + "/JumpWebService/Logic/Work/jobCheckFavorite.php";
+
 
     public static String getSelectUserProfile() {
         return selectUserProfile;
@@ -79,6 +81,9 @@ public class Constants {
     }
     public static String getJobUpdateFavorite() {
         return jobUpdateFavorite;
+    }
+    public static String getJobCheckFavorite() {
+        return jobCheckFavorite;
     }
 
     public static String getIp() {

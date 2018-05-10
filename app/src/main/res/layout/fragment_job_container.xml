@@ -13,16 +13,6 @@
         android:orientation="vertical"
         >
 
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.alef.jump.jobItem"
-            android:id="@+id/fr_jobItem"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentTop="true"
-            class="com.alef.jump.jobItem"
-            tools:layout="@layout/fragment_job_item" />
-
     </LinearLayout>
 
 

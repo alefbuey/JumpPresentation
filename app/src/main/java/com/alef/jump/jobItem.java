@@ -79,6 +79,30 @@ public class jobItem extends android.support.v4.app.Fragment {
         llNumVac = view.findViewById(R.id.ll_numVac);
         llListaCateg = view.findViewById(R.id.ll_listCateg);
 
+        String idUser = String.valueOf(Globals.getInstance().getId());
+        String idJob = String.valueOf(id);
+        String url = Constants.getJobCheckFavorite() +"?idUser="+idUser+"&idJob="+idJob;
+
+        @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest1 = new SendGetRequest(url) {
+            @Override
+            protected void onPostExecute(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    int estado = jsonObject.getInt("estado");
+                    if(estado ==1){
+                        imAddFav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_filled));
+                        isFav = !isFav;
+                    }else{
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        sendGetRequest1.execute();
+
 
         tvJobName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +159,9 @@ public class jobItem extends android.support.v4.app.Fragment {
                                 if( estado == 1) {
                                     imAddFav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
                                     isFav = !isFav;
+                                }
+                                if( actividadActual == 2){
+                                    getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.ll_containerJobs)).commit();
                                 }
                                     Toast.makeText(getActivity(),mensaje, Toast.LENGTH_LONG);
 
