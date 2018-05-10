@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,60 @@
     android:gravity="center"
     tools:context=".Register">
 
+
+
+    <TextView
+        android:id="@+id/centerV"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/center_center_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerV"/>
+
+    <TextView
+        android:id="@+id/center_center2_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/center_center_v"/>
+
+    <TextView
+        android:id="@+id/center_centeru_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/centerV"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/centerH"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/center_centerR_H"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintLeft_toLeftOf="@id/centerH"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
     <ViewFlipper android:id="@+id/vfRegister"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <include layout="@layout/register1"/>
         <include layout="@layout/register2"/>
@@ -21,44 +71,47 @@
     </ViewFlipper>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_gravity="center_horizontal">
+    <Button
+        android:id="@+id/btnPrev"
+        android:background="@drawable/ic_prev"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:onClick="onClickPrev"
+        app:layout_constraintTop_toTopOf="@id/center_center_v"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/centerH"
+        app:layout_constraintLeft_toLeftOf="parent"
 
-        <Button
-            android:id="@+id/btnPrev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Prev"
-            android:onClick="onClickPrev"
-            android:visibility="gone"
-            />
+        />
 
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Next"
-            android:onClick="onClickNext"
-            />
+    <Button
+        android:id="@+id/btnNext"
+        android:background="@drawable/ic_next"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="onClickNext"
+        android:layout_alignParentRight="true"
+        app:layout_constraintLeft_toLeftOf="@id/centerH"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/center_center_v"
+        />
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Save"
-            android:visibility="gone"
-            android:onClick="onClickSave"
-            />
+    <Button
+        android:id="@+id/btnSave"
+        android:background="@drawable/ic_done"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:onClick="onClickSave"
+        app:layout_constraintRight_toRightOf="@id/btn_Next"
+        app:layout_constraintLeft_toLeftOf="@id/btn_Next"
+        app:layout_constraintTop_toTopOf="@id/btn_Next"
+        app:layout_constraintBottom_toBottomOf="@id/btn_Next"/>
 
 
-    </RelativeLayout>
 
-</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

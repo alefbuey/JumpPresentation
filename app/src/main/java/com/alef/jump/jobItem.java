@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Logic.Constants;
+import Logic.Functions;
 import Logic.GetRequest;
 import Logic.SendGetRequest;
 import android.support.v4.app.Fragment;
@@ -83,7 +84,7 @@ public class jobItem extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), JobView.class);
-                intent.putExtra("id", id);
+                //intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -119,7 +120,8 @@ public class jobItem extends android.support.v4.app.Fragment {
 
                         tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
                         tvJobName.setText(dataJob.getString("title"));
-                        tvJobCost.setText(dataJob.getString("jobcost"));
+                        String price = new Functions().transformPrice(Double.parseDouble(dataJob.getString("jobcost")));
+                        tvJobCost.setText("$"+price);
                         tvNumDays.setText(dataJob.getString("dateposted"));
 
                     } catch (JSONException e) {
