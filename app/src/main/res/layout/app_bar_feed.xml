@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Feed"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#b3b3b3">
 
 
     <android.support.design.widget.AppBarLayout
@@ -39,6 +40,7 @@
         android:layout_height="0dp"
         android:layout_weight="10"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        android:background="#FFFFFF"/>
 
 </LinearLayout>

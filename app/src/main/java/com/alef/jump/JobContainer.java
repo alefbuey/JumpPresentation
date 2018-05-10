@@ -88,7 +88,7 @@ public class JobContainer extends Fragment{
                     if (response != null) {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            int index = 0;
+                            int index;
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 index = jsonArray.getJSONArray(i).getInt(0);
                                 Fragment childFragment = new jobItem(index);
