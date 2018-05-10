@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +23,20 @@ import Logic.SendGetRequest;
 
 public class JobContainer extends Fragment{
 
+    String TAG = "Job Container";
 
+    int actividadActual;
 
     public JobContainer() {
         // Required empty public constructor
     }
 
 
-    public static JobContainer newInstance(String param1, String param2) {
+    public static JobContainer newInstance(int actividad) {
         JobContainer fragment = new JobContainer();
+        Bundle args = new Bundle();
+        args.putInt("actividad",actividad);
+        fragment.setArguments(args);
 
         return fragment;
     }
@@ -38,6 +44,9 @@ public class JobContainer extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            actividadActual = getArguments().getInt("actividad");
+        }
 
 
     }
@@ -46,39 +55,62 @@ public class JobContainer extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job_container, container, false);
-    }
+        View fragment_view = inflater.inflate(R.layout.fragment_job_container, container, false);
 
 
-    @SuppressLint("ResourceType")
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+        //   Definir en que actividad se va a realizar actividad
+        //1. Feed
+        //2. Favoritos
+        //3. Current My Jobs
+        //4. Applying MyJobs
+        //5. History MyJobs
+        //6. Current My Bussines
+        //7. Posted MyBussines
+        //8. History MyBussines
 
+        //Aqui van los nuevos urls
+        String url= null;
 
-        @SuppressLint("StaticFieldLeak") SendGetRequest newReq = new SendGetRequest(Constants.getJobReadMultiple()+"?limit=10") {
-            @Override
-            protected void onPostExecute(String response) {
-                if(response!=null) {
-                    try {
-                        JSONArray jsonArray = new JSONArray(response);
-                        int index = 0;
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            index = jsonArray.getJSONArray(i).getInt(0);
-                            Fragment childFragment = new jobItem(index);
-                            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                            transaction.add(R.id.ll_containerJobs, childFragment).commit();
+        switch (this.actividadActual){
+            case 1: url = Constants.getJobReadMultiple()+"?limit=10"; break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            case 5: break;
+            case 6: break;
+        }
+
+        if(url!=null) {
+
+            @SuppressLint("StaticFieldLeak") SendGetRequest newReq = new SendGetRequest(url) {
+                @Override
+                protected void onPostExecute(String response) {
+                    if (response != null) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            int index = 0;
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                index = jsonArray.getJSONArray(i).getInt(0);
+                                Fragment childFragment = new jobItem(index);
+                                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                                transaction.add(R.id.ll_containerJobs, childFragment).commit();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
                 }
-            }
-        };
+            };
 
 
-        newReq.execute();
+            newReq.execute();
+        }else{
+            Log.e(TAG,"Not established URL");
+        }
 
+        return fragment_view;
     }
+
 
 }
