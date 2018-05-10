@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import android.support.v4.app.Fragment;
 
 public class jobItem extends android.support.v4.app.Fragment {
 
+    String TAG = "jobItem";
+
     ImageView imPhotoProf, imShare, imAddFav;
     TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
     ImageView imPhotoJob;
@@ -31,26 +34,21 @@ public class jobItem extends android.support.v4.app.Fragment {
 
     boolean isFav = false;
 
-    int id = 0;
-
+    int id;
+    int actividadActual;
 
     public jobItem (){}
 
 
 
-    @SuppressLint("ValidFragment")
-    public jobItem (int id){
-        this.id = id;
 
 
-    }
+    public static jobItem newInstance(int id, int actividad) {
 
-
-    public static jobItem newInstance(int id) {
-
-        jobItem f = new jobItem(id);
-
+        jobItem f = new jobItem();
         Bundle b = new Bundle();
+        b.putInt("id",id);
+        b.putInt("actividad",actividad);
         f.setArguments(b);
         return f;
     }
@@ -59,7 +57,10 @@ public class jobItem extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (getArguments() != null) {
+            actividadActual = getArguments().getInt("actividad");
+            id = getArguments().getInt("id");
+        }
     }
 
     @Override
@@ -91,9 +92,63 @@ public class jobItem extends android.support.v4.app.Fragment {
         imAddFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFav)imAddFav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_filled));
-                else imAddFav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
-                isFav = !isFav;
+                String idUser = String.valueOf(Globals.getInstance().getId());
+                String idJob = String.valueOf(id);
+                Log.e(TAG,idJob);
+                if(!isFav){
+                    String url = Constants.getJobUpdateFavorite()+"?idUser="+idUser+"&idJob="+idJob+"&action=1";
+                    Log.e(TAG,url);
+                    @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
+                        @Override
+                        protected void onPostExecute(String response) {
+                            try {
+                                Log.e(TAG,response);
+                                JSONObject jsonObject = new JSONObject(response);
+                                Log.e(TAG,jsonObject.toString());
+                                int estado = jsonObject.getInt("estado");
+                                String mensaje = jsonObject.getString("mensaje");
+                                if( estado == 1) {
+                                    imAddFav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_filled));
+                                    isFav = !isFav;
+                                }
+                                Toast.makeText(getActivity(),mensaje, Toast.LENGTH_LONG);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getActivity(),"The response was not received",Toast.LENGTH_LONG);
+                            }
+                        }
+                    };
+
+                    sendGetRequest.execute();
+
+                } else {
+
+                    String url = Constants.getJobUpdateFavorite()+"?idUser="+idUser+"&idJob="+idJob+"&action=2";
+                    @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
+                        @Override
+                        protected void onPostExecute(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                int estado = jsonObject.getInt("estado");
+                                String mensaje = jsonObject.getString("mensaje");
+                                if( estado == 1) {
+                                    imAddFav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite));
+                                    isFav = !isFav;
+                                }
+                                    Toast.makeText(getActivity(),mensaje, Toast.LENGTH_LONG);
+
+                                } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(getActivity(),"The response was not received",Toast.LENGTH_LONG);
+                            }
+
+
+                        }
+                    };
+                    sendGetRequest.execute();
+                }
+
             }
         });
 

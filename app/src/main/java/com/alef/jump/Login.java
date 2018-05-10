@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void onClickLogin(View v) {
-        String url = Constants.getSelectUser() + "?email=" + etEmail.getText().toString() + "&password=" + etPassword.getText().toString();
+        String url = Constants.getSelectUser() + "?email=" + etEmail.getText().toString().trim() + "&password=" + etPassword.getText().toString().trim();
 
         @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
             @Override
@@ -71,7 +71,6 @@ public class Login extends AppCompatActivity {
 
                         Log.e(TAG, user.toString());
                         Intent i = new Intent(getApplicationContext(), Feed.class);
-                        i.putExtra("user", user);
                         startActivity(i);
                     } else {
                         try {

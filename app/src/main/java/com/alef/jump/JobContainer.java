@@ -26,6 +26,7 @@ public class JobContainer extends Fragment{
     String TAG = "Job Container";
 
     int actividadActual;
+    //String idUser;
 
     public JobContainer() {
         // Required empty public constructor
@@ -64,20 +65,31 @@ public class JobContainer extends Fragment{
         //3. Current My Jobs
         //4. Applying MyJobs
         //5. History MyJobs
-        //6. Current My Bussines
+        //6. In Course My Bussines
         //7. Posted MyBussines
-        //8. History MyBussines
+        //8. Finished MyBussines
 
         //Aqui van los nuevos urls
-        String url= null;
 
+        //estados de MyJobs
+        //1. Applying
+        //2. Working o Current
+        //3. Done or History
+        String url= null;
+//        Log.e(TAG,getArguments().getString("idUser"));
+        String idUser = String.valueOf(Globals.getInstance().getId());
+        Log.e(TAG,idUser);
         switch (this.actividadActual){
             case 1: url = Constants.getJobReadMultiple()+"?limit=10"; break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
-            case 5: break;
-            case 6: break;
+            case 2: url = Constants.getJobMyFovoriteJobs()+"?idUser="+idUser+"&limit=10";break;
+            case 3: url = Constants.getJobMyJobs()+"?idUser="+ idUser +"&state=2&limit=10";break;
+            case 4: url = Constants.getJobMyJobs()+"?idUser="+ idUser +"&state=1&limit=10";break;
+            case 5: url = Constants.getJobMyJobs()+"?idUser="+ idUser +"&state=3&limit=10";break;
+            case 6: url = Constants.getJobMyBusiness()+"?idUser="+idUser + "&state1=3&limit=10";break;
+            case 7: url = Constants.getJobMyBusiness()+"?idUser="+idUser + "&state1=1&state2=2&limit=10";break;
+            case 8: url = Constants.getJobMyBusiness()+"?idUser="+idUser + "&state1=4&state2=5&limit=10";break;
+
+
         }
 
         if(url!=null) {
@@ -88,10 +100,11 @@ public class JobContainer extends Fragment{
                     if (response != null) {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
+                            Log.e(TAG,jsonArray.toString());
                             int index = 0;
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 index = jsonArray.getJSONArray(i).getInt(0);
-                                Fragment childFragment = new jobItem(index);
+                                Fragment childFragment = jobItem.newInstance(index,actividadActual);
                                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                                 transaction.add(R.id.ll_containerJobs, childFragment).commit();
                             }

@@ -13,7 +13,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus magna eu luctus mattis. Donec id neque efficitur arcu convallis imperdiet. Sed lectus velit, posuere vel quam sed, consectetur porta ligula</string>
-    <string name="title_Current">Current</string>
+    <string name="title_Current">In Course</string>
     <string name="title_Applying">Applying</string>
-    <string name="title_History">History</string>
+    <string name="title_History">Finished</string>
+    <string name="title_Posted">Posted</string>
+
 </resources>

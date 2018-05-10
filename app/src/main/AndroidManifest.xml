@@ -19,7 +19,7 @@
         <activity
             android:name=".Feed"
             android:label="@string/title_activity_feed"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".Register" />
         <activity android:name=".Login">
             <intent-filter>
@@ -31,7 +31,8 @@
         <activity android:name=".Profile" />
         <activity android:name=".JobView" />
         <activity android:name=".ProfileSetting" />
-        <activity android:name=".MyJobs"></activity>
+        <activity android:name=".MyJobs" />
+        <activity android:name=".MyBusiness"></activity>
     </application>
 
 </manifest>

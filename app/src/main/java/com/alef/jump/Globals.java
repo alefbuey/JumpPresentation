@@ -2,6 +2,8 @@ package com.alef.jump;
 
 import android.app.Application;
 
+import People.User;
+
 public class Globals extends Application{
 
     private static Globals instance;
@@ -14,6 +16,7 @@ public class Globals extends Application{
     private String email;
     private String name;
     private String lastName;
+
 
     public int getId() {
         return id;
@@ -46,7 +49,6 @@ public class Globals extends Application{
     public String getLastName() {
         return lastName;
     }
-
 
 
     //Patron singleton
