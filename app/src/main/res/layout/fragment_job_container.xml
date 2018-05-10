@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JobContainer">
+
+
+    <LinearLayout
+        android:id="@+id/ll_containerJobs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.alef.jump.jobItem"
+            android:id="@+id/fr_jobItem"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentTop="true"
+            class="com.alef.jump.jobItem"
+            tools:layout="@layout/fragment_job_item" />
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

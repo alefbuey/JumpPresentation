@@ -27,18 +27,19 @@
         <activity
             android:name="com.alef.jump.Feed"
             android:label="@string/title_activity_feed"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.alef.jump.Register" />
+        <activity android:name="com.alef.jump.Login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.alef.jump.Register" />
-        <activity android:name="com.alef.jump.Login" >
-        </activity>
         <activity android:name="com.alef.jump.Profile" />
         <activity android:name="com.alef.jump.JobView" />
+        <activity android:name="com.alef.jump.ProfileSetting" />
+        <activity android:name="com.alef.jump.MyJobs" />
 
         <meta-data
             android:name="android.support.VERSION"

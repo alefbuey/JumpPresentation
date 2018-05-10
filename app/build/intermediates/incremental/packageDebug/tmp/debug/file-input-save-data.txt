@@ -1,11 +1,11 @@
 #Internal package file, do not edit.
-#Mon May 07 15:39:56 ECT 2018
-1.base=/home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/build/intermediates/transforms/dexMerger/debug/12
+#Thu May 10 02:30:42 ECT 2018
+1.base=/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/transforms/dexMerger/debug/28
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY
 count=2
 1.set=DEX
 0.path=classes.dex
 0.set=DEX
-0.base=/home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/build/intermediates/transforms/dexMerger/debug/11
+0.base=/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/transforms/dexMerger/debug/27
 1.path=classes.dex

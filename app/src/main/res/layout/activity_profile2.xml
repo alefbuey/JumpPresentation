@@ -15,12 +15,14 @@
         android:background="#FFB84E">
 
         <ImageView
+            android:id="@+id/ivSettings"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_settings"
             android:clickable="true"
+            android:onClick="onClickSetting"
             />
 
     </LinearLayout>
@@ -52,6 +54,7 @@
                     android:onClick="onClickPhoto"/>
 
                 <TextView
+                    android:id="@+id/tvRank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_textview"

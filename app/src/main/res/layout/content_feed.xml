@@ -15,29 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/navigation"
-        android:padding="5dp"
-
-
-
-        >
+        android:padding="5dp">
 
         <LinearLayout
-            android:id="@+id/ll_container"
+            android:id="@+id/ll_containerFrag"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            >
-
-            <!--android:layout_alignParentTop="true" -->
-
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.alef.jump.jobItem"
-                android:id="@+id/fr_jobItem"
-                class="com.alef.jump.jobItem"
-                tools:layout="@layout/fragment_job_item" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
         </LinearLayout>

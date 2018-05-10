@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/anthony/Proyectos/Comerciales/Alef/Jump/JumpPresentation/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et.xml",
+            "outputFile": "/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et.xml",
             "map": [
                 {
-                    "source": "/home/anthony/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6596fb7112939348176b6f2466cb0397/res/values-et/values-et.xml",
+                    "source": "/home/ferz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ad23bd932a46526b5da68055dd6a24dc/res/values-et/values-et.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
