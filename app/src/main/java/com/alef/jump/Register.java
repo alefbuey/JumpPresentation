@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import org.json.JSONObject;
@@ -48,7 +49,7 @@ public class Register extends AppCompatActivity {
         btnPrev = (Button) findViewById(R.id.btnPrev);
         vfRegister = (ViewFlipper) findViewById(R.id.vfRegister);
 
-
+        gender = "";
 
     }
 
@@ -88,28 +89,61 @@ public class Register extends AppCompatActivity {
         String dateString = chagedFormatDate();
 
         //Creacion del Json que se va a enviar
-//        String values = getIntent().getStringExtra("values")+","+ etEmail.getText().toString()+","+etPassword.getText().toString();
-//        String[] partValues = values.split(",");
-        JSONObject data = new JSONObject();
-        try{
-            data.put("name",etName.getText().toString());
-            data.put("lastname",etLastName.getText().toString());
-            data.put("birthdate",dateString);
-            data.put("gender",gender);
-            data.put("email",etEmail.getText().toString());
-            data.put("password",etPassword.getText().toString());
-            Log.d("JSON TO STRING",data.toString());
-            //Envio a traves de metodo POST
-            SendPostRequest spr = new SendPostRequest(getApplicationContext(), Constants.getInsertUser(),data);
-            spr.setMensaje("Successful User Creation");
-            spr.execute();
-        }catch (Exception e){
-            Log.d("CREACION JSON",e.getMessage());
+
+        String name = etName.getText().toString();
+        String lastname = etLastName.getText().toString();
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+
+        Log.e("validacion", name.isEmpty() ? "Esta vacio" : "no esta vacio");
+
+        if(!name.isEmpty() || !lastname.isEmpty() || !email.isEmpty() || !password.isEmpty() || !gender.isEmpty() ) {
+
+            //Creacion del Json que se va a enviar
+            JSONObject dataUser = new JSONObject();
+            JSONObject data = new JSONObject();
+            JSONObject dataextra = new JSONObject();
+            try {
+
+                data.put("name", name);
+                data.put("idstate",1);
+                data.put("idlocation",1);
+                data.put("typenationalidentifier",1);
+                data.put("lastname", lastname);
+                data.put("email", email);
+                data.put("password", password);
+                data.put("birthdate", dateString);
+                data.put("gender", gender);
+                data.put("nationalidentifier","No Info");
+                data.put("direction","No Info");
+                data.put("nationality","No Info");
+                data.put("availablemoney","0.00");
+                data.put("rank","0");
+
+
+
+
+                dataextra.put("about","No Info");
+                dataextra.put("cellphone","No info");
+
+                dataUser.put("user",data);
+                dataUser.put("userStaff",dataextra);
+                Log.d("JSON TO STRING", dataUser.toString());
+
+
+                //Envio a traves de metodo POST
+                SendPostRequest spr = new SendPostRequest(getApplicationContext(), Constants.getInsertUser(), dataUser);
+                spr.setMensaje("Successful User Creation");
+                spr.execute();
+            } catch (Exception e) {
+                Log.d("CREACION JSON", e.getMessage());
+            }
+
+            Intent i = new Intent(getApplicationContext(), Login.class);
+            startActivity(i);
+        }else{
+            Toast.makeText(getApplicationContext(),"Complete your register. Empty Fields",Toast.LENGTH_LONG).show();
         }
-
-
-        Intent i = new Intent(getApplicationContext(),Login.class);
-        startActivity(i);
     }
 
     //Método para cambiar de formato

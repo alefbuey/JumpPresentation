@@ -55,7 +55,7 @@ public class Feed extends AppCompatActivity
         lateralBar.setNavigationItemSelectedListener(this);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.ll_containerFrag, new JobContainer());
+        ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(1));
         ft.commit();
 
 
@@ -139,7 +139,7 @@ public class Feed extends AppCompatActivity
                         i.putExtra("user", userToPass);
                         startActivity(i);
                     } else {
-                        Toast.makeText(getApplicationContext(), "The json is not received", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Failed Connection", Toast.LENGTH_LONG).show();
                     }
                 }
             };
@@ -149,7 +149,8 @@ public class Feed extends AppCompatActivity
 
 
         } else if (id == R.id.nav_myJobs) {
-
+            Intent intent = new Intent(getApplicationContext(),MyJobs.class);
+            startActivity(intent);
         } else if (id == R.id.nav_myBusiness) {
 
         } else if (id == R.id.nav_addJob) {
@@ -174,7 +175,7 @@ public class Feed extends AppCompatActivity
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.ll_containerFrag, new JobContainer());
+                    ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(1));
                     ft.commit();
                     return true;
                 case R.id.navigation_favorites:

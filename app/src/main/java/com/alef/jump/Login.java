@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 }else{
-                    Toast.makeText(getApplicationContext(),"The json is not received",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Failed Connection",Toast.LENGTH_LONG).show();
                 }
             }
         };
