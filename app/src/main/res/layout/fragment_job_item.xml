@@ -82,7 +82,7 @@
            app:layout_constraintTop_toTopOf="@id/tv_numDaysAgo"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintLeft_toLeftOf="@id/centerH"
-           android:background="@drawable/ph_job"/>
+           android:background="#ab9466"/>
 
 
 

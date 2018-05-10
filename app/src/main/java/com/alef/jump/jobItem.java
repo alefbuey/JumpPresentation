@@ -25,33 +25,26 @@ import android.support.v4.app.Fragment;
 
 public class jobItem extends android.support.v4.app.Fragment {
 
+    boolean isFav = false;
+
+    int id = 0;
+
     ImageView imPhotoProf, imShare, imAddFav;
     TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
     ImageView imPhotoJob;
     LinearLayout llNumVac, llListaCateg;
 
-    boolean isFav = false;
 
-    int id = 0;
 
 
     public jobItem (){}
 
-
-
-    @SuppressLint("ValidFragment")
-    public jobItem (int id){
-        this.id = id;
-
-
-    }
-
-
     public static jobItem newInstance(int id) {
 
-        jobItem f = new jobItem(id);
+        jobItem f = new jobItem();
 
         Bundle b = new Bundle();
+        b.putInt("id",id);
         f.setArguments(b);
         return f;
     }
@@ -60,6 +53,9 @@ public class jobItem extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            id = getArguments().getInt("id");
+        }
 
     }
 
@@ -84,7 +80,7 @@ public class jobItem extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), JobView.class);
-                //intent.putExtra("id", id);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
