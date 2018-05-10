@@ -18,39 +18,33 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Logic.Constants;
+import Logic.Functions;
 import Logic.GetRequest;
 import Logic.SendGetRequest;
 import android.support.v4.app.Fragment;
 
 public class jobItem extends android.support.v4.app.Fragment {
 
+    boolean isFav = false;
+
+    int id = 0;
+
     ImageView imPhotoProf, imShare, imAddFav;
     TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
     ImageView imPhotoJob;
     LinearLayout llNumVac, llListaCateg;
 
-    boolean isFav = false;
 
-    int id = 0;
 
 
     public jobItem (){}
 
-
-
-    @SuppressLint("ValidFragment")
-    public jobItem (int id){
-        this.id = id;
-
-
-    }
-
-
     public static jobItem newInstance(int id) {
 
-        jobItem f = new jobItem(id);
+        jobItem f = new jobItem();
 
         Bundle b = new Bundle();
+        b.putInt("id",id);
         f.setArguments(b);
         return f;
     }
@@ -59,6 +53,9 @@ public class jobItem extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            id = getArguments().getInt("id");
+        }
 
     }
 
@@ -119,7 +116,8 @@ public class jobItem extends android.support.v4.app.Fragment {
 
                         tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
                         tvJobName.setText(dataJob.getString("title"));
-                        tvJobCost.setText(dataJob.getString("jobcost"));
+                        String price = new Functions().transformPrice(Double.parseDouble(dataJob.getString("jobcost")));
+                        tvJobCost.setText("$"+price);
                         tvNumDays.setText(dataJob.getString("dateposted"));
 
                     } catch (JSONException e) {
