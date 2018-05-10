@@ -2,8 +2,11 @@ package com.alef.jump;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -20,6 +23,7 @@ public class JobView extends AppCompatActivity {
 
     TextView tvJobName, tvDesc, tvJobCost, tvStartDate, tvEndDate, tvNumVac;
 
+    Button btnApply;
 
 
     @Override
@@ -38,6 +42,15 @@ public class JobView extends AppCompatActivity {
         tvEndDate = findViewById(R.id.tv_endDateVal);
         tvNumVac = findViewById(R.id.tv_numVacVal);
 
+        btnApply = findViewById(R.id.btn_apply);
+
+        btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(JobView.this, ApplyJob.class);
+                startActivity(intent);
+            }
+        });
 
         @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(Constants.getJobRead()+"?id="+id) {
             @Override
@@ -51,9 +64,10 @@ public class JobView extends AppCompatActivity {
                         //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
 
 
+                        String price = String.valueOf(dataJob.getInt("jobcost"));
                         tvJobName.setText(dataJob.getString("title"));
                         tvDesc.setText(dataJob.getString("description"));
-                        tvJobCost.setText(dataJob.getString("jobcost"));
+                        tvJobCost.setText("$ "+ price);
                         tvStartDate.setText(dataJob.getString("datestart"));
                         tvEndDate.setText(dataJob.getString("dateend"));
                         tvNumVac.setText(dataJob.getString("numbervacancies"));

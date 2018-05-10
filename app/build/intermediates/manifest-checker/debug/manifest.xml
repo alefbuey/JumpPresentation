@@ -40,6 +40,9 @@
         <activity android:name="com.alef.jump.JobView" />
         <activity android:name="com.alef.jump.ProfileSetting" />
         <activity android:name="com.alef.jump.MyJobs" />
+        <activity
+            android:name="com.alef.jump.ApplyJob"
+            android:theme="@android:style/Theme.Dialog" />
 
         <meta-data
             android:name="android.support.VERSION"
