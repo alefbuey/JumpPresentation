@@ -1,113 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
-    api-level="24"
+    abi="armeabi-v7a,armeabi"
+    api-level="22"
     build-mode="COLD"
-    density="420dpi"
+    density="hdpi"
     format="10"
-    ir-eligibility="R_CLASS_CHANGE"
     plugin-version="3.1.1"
-    timestamp="1526028449099"
-    token="8889884577665962113"
+    timestamp="1526054802345"
+    token="2234430968878517015"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="135" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="35" />
+        duration="0" />
     <task
         name="verifier"
-        duration="81" />
-
-    <artifact
-        location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
+        duration="0" />
 
     <build
         build-mode="FULL"
-        ir-eligibility="CLASS_ADDED"
-        timestamp="1526027797055"
+        timestamp="1526052288526"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1526053589409"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1526028449099"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
+        timestamp="1526054802345"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

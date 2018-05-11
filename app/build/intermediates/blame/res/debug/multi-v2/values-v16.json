@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/ferz/AndroidStudioProjects/Jump/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/ferz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3468c0e3a530486236a60f3afa50a3e5/res/values-v16/values-v16.xml",
+                    "source": "/home/ferynando7/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/e15472561bc89b651a7457d95ccf921c/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/ferz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/ad23bd932a46526b5da68055dd6a24dc/res/values-v16/values-v16.xml",
+                    "source": "/home/ferynando7/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/a309ef496ba37df1dbb0b61a7e6d7825/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
