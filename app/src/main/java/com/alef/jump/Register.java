@@ -103,7 +103,6 @@ public class Register extends AppCompatActivity {
             //Creacion del Json que se va a enviar
             JSONObject dataUser = new JSONObject();
             JSONObject data = new JSONObject();
-            JSONObject dataextra = new JSONObject();
             try {
 
                 data.put("name", name);
@@ -122,16 +121,6 @@ public class Register extends AppCompatActivity {
                 data.put("rank","0");
 
 
-
-
-                dataextra.put("about","No Info");
-                dataextra.put("cellphone","No info");
-
-                dataUser.put("user",data);
-                dataUser.put("userStaff",dataextra);
-                Log.d("JSON TO STRING", dataUser.toString());
-
-
                 //Envio a traves de metodo POST
                 @SuppressLint("StaticFieldLeak") SendPostRequest spr = new SendPostRequest(Constants.getInsertUser(), dataUser) {
                     @Override
@@ -145,6 +134,7 @@ public class Register extends AppCompatActivity {
                         }
                     }
                 };
+
                 spr.setMensaje("Successful User Creation");
                 spr.execute();
             } catch (Exception e) {

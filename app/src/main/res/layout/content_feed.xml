@@ -15,13 +15,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/navigation"
-        android:padding="5dp">
+        android:padding="10dp"
+        >
 
         <LinearLayout
             android:id="@+id/ll_containerFrag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+>
 
 
         </LinearLayout>
