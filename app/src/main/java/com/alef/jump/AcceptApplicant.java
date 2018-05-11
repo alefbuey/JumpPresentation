@@ -1,6 +1,8 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -94,7 +96,18 @@ public class AcceptApplicant extends Activity {
 
                         Log.d("JSON Acceptance", String.valueOf(acceptance));
 
-                        SendPostRequest sp = new SendPostRequest(getApplicationContext(), Constants.getUpdateEmployeeState(),acceptance);
+                        @SuppressLint("StaticFieldLeak") SendPostRequest sp = new SendPostRequest(Constants.getUpdateEmployeeState(), acceptance) {
+                            @Override
+                            protected void onPostExecute(Integer respuesta) {
+                                if (respuesta==0) {
+                                    Intent intent = new Intent(getApplicationContext(), MyBusiness.class);
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"Error in the process",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        };
                         sp.execute();
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), "Error",

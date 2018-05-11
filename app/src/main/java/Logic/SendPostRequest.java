@@ -16,16 +16,14 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class SendPostRequest extends AsyncTask<String, Void, String> {
+public abstract class SendPostRequest extends AsyncTask<String, Void, Integer> {
 
-    Context context;
     String receiveUrl;
     JSONObject receiveJSON;
 
     String mensaje; //Mensaje de confirmacion, si desea ponerlo
 
-    public SendPostRequest(Context context, String receiveUrl, JSONObject receiveJSON) {
-        this.context = context;
+    public SendPostRequest(String receiveUrl, JSONObject receiveJSON) {
         this.receiveUrl = receiveUrl;
         this.receiveJSON = receiveJSON;
     }
@@ -36,9 +34,9 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
 
     protected void onPreExecute(){}
 
-    protected String doInBackground(String... arg0) {
+    protected Integer doInBackground(String... arg0) {
 
-        String response;
+        int response;
         try {
 
             URL url = new URL(this.receiveUrl); // here is your URL path
@@ -60,26 +58,21 @@ public class SendPostRequest extends AsyncTask<String, Void, String> {
             os.close();
 
             InputStream in = new BufferedInputStream(conn.getInputStream());
-            response = convertStreamToString(in);
-
+            //response = convertStreamToString(in);
+            response = 0;
             conn.disconnect();
 
 
         } catch (IOException e) {
-            response = "Exception: " + e.getMessage();
-
+//            response = "Exception: " + e.getMessage();
+            response = 1;
         }
 
         return response;
     }
 
     @Override
-    protected void onPostExecute(String respuesta) {
-        if(respuesta!=null){
-            Toast.makeText(this.context, respuesta, Toast.LENGTH_LONG).show();
-        }
-    }
-
+    protected abstract void onPostExecute(Integer respuesta);
 
 
     @NonNull

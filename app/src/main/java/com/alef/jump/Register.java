@@ -1,5 +1,6 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -132,15 +133,24 @@ public class Register extends AppCompatActivity {
 
 
                 //Envio a traves de metodo POST
-                SendPostRequest spr = new SendPostRequest(getApplicationContext(), Constants.getInsertUser(), dataUser);
+                @SuppressLint("StaticFieldLeak") SendPostRequest spr = new SendPostRequest(Constants.getInsertUser(), dataUser) {
+                    @Override
+                    protected void onPostExecute(Integer respuesta) {
+                        if (respuesta==0) {
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Error in the process",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                };
                 spr.setMensaje("Successful User Creation");
                 spr.execute();
             } catch (Exception e) {
                 Log.d("CREACION JSON", e.getMessage());
             }
 
-            Intent i = new Intent(getApplicationContext(), Login.class);
-            startActivity(i);
         }else{
             Toast.makeText(getApplicationContext(),"Complete your register. Empty Fields",Toast.LENGTH_LONG).show();
         }
