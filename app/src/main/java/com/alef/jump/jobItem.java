@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Logic.Constants;
+import Logic.Functions;
 import Logic.GetRequest;
 import Logic.SendGetRequest;
 import android.support.v4.app.Fragment;
@@ -27,23 +28,19 @@ public class jobItem extends android.support.v4.app.Fragment {
 
     String TAG = "jobItem";
 
+    boolean isFav = false;
+
     ImageView imPhotoProf, imShare, imAddFav;
     TextView tvProfileName, tvJobCost,tvJobName, tvNumDays;
     ImageView imPhotoJob;
     LinearLayout llNumVac, llListaCateg;
 
-    boolean isFav = false;
 
     int id;
     int actividadActual;
-
     public jobItem (){}
-
-
-
-
-
     public static jobItem newInstance(int id, int actividad) {
+
 
         jobItem f = new jobItem();
         Bundle b = new Bundle();
@@ -61,6 +58,7 @@ public class jobItem extends android.support.v4.app.Fragment {
             actividadActual = getArguments().getInt("actividad");
             id = getArguments().getInt("id");
         }
+
     }
 
     @Override
@@ -201,7 +199,8 @@ public class jobItem extends android.support.v4.app.Fragment {
 
                         tvProfileName.setText(dataUser.getString("name")+ " " + dataUser.getString("lastname"));
                         tvJobName.setText(dataJob.getString("title"));
-                        tvJobCost.setText(dataJob.getString("jobcost"));
+                        String price = new Functions().transformPrice(Double.parseDouble(dataJob.getString("jobcost")));
+                        tvJobCost.setText("$"+price);
                         tvNumDays.setText(dataJob.getString("dateposted"));
 
                     } catch (JSONException e) {

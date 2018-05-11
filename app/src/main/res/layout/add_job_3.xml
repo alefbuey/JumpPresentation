@@ -1,15 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/back_color">
+
+
+
+    <TextView
+        android:id="@+id/centerV"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/center_center_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerV"/>
+
+    <TextView
+        android:id="@+id/center_center2_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/center_center_v"/>
+
+    <TextView
+        android:id="@+id/center_centeru_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/centerV"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/centerH"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/center_centerR_H"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintLeft_toLeftOf="@id/centerH"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+    <ImageView
+        android:id="@+id/iv_case"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_case"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/center_centeru_v"/>
+
+
+
 
     <GridLayout android:id="@+id/GridLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="2"
         android:rowCount="3"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_case"
         android:orientation="horizontal">
 
         <TextView
@@ -41,7 +108,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:text="Post Limit Date"
+            android:text="Deadline"
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -58,6 +125,4 @@
 
 
 
-
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

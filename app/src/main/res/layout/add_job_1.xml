@@ -2,14 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    >
-
-
-
-
+    android:background="@drawable/back_color">
 
 
         <TextView
@@ -17,7 +12,7 @@
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
            />
 
         <EditText
@@ -33,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="30dp"/>
 
         <EditText
             android:id="@+id/et_Desc"
@@ -48,7 +43,7 @@
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             />
 
         <EditText
@@ -64,12 +59,14 @@
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center">
 
             <RadioButton
                 android:id="@+id/rb_Virtual"
@@ -77,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="Virtual"
                 android:checked="false"
+                android:layout_marginRight="5dp"
                 android:onClick="onRadioButtonClick"/>
 
                 <RadioButton
@@ -85,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="Physical"
                     android:checked="false"
+                    android:layout_marginLeft="5dp"
                     android:onClick="onRadioButtonClick"/>
 
 

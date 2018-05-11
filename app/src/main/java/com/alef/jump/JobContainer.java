@@ -105,6 +105,7 @@ public class JobContainer extends Fragment{
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 index = jsonArray.getJSONArray(i).getInt(0);
                                 Fragment childFragment = jobItem.newInstance(index,actividadActual);
+
                                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                                 transaction.add(R.id.ll_containerJobs, childFragment).commit();
                             }
