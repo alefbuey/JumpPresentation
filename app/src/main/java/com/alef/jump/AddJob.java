@@ -1,6 +1,8 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -139,7 +141,18 @@ public class AddJob extends Activity {
                     jobData.put("datepostend", etDateLimAppl.getText().toString());
                     jobData.put("numbervacancies",etNumVac.getText().toString());
 
-                    SendPostRequest saveJob = new SendPostRequest(getApplicationContext(), Constants.getJobCreate(),jobData);
+                    @SuppressLint("StaticFieldLeak") SendPostRequest saveJob = new SendPostRequest(Constants.getJobCreate(), jobData) {
+                        @Override
+                        protected void onPostExecute(Integer respuesta) {
+                            if (respuesta==0) {
+                                Intent intent = new Intent(getApplicationContext(), MyBusiness.class);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                Toast.makeText(getApplicationContext(),"Error in the process",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    };
 
                     saveJob.execute();
 

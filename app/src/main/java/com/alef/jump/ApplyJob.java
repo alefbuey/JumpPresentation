@@ -1,6 +1,8 @@
 package com.alef.jump;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +92,20 @@ public class ApplyJob extends Activity {
                         dataApplication.put("postedreason", etApplyReason.getText().toString());
                     }
 
-                    SendPostRequest sp = new SendPostRequest(getApplicationContext(), Constants.getJobApply(),dataApplication);
+                    Log.d("JSON APPLY JOB", String.valueOf(dataApplication));
+
+                    @SuppressLint("StaticFieldLeak") SendPostRequest sp = new SendPostRequest(Constants.getJobApply(), dataApplication) {
+                        @Override
+                        protected void onPostExecute(Integer respuesta) {
+                            if (respuesta==0) {
+                                Intent intent = new Intent(getApplicationContext(), MyJobs.class);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                Toast.makeText(getApplicationContext(),"Error in the process",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    };
                     sp.execute();
                 } catch (JSONException e) {
                     e.printStackTrace();
