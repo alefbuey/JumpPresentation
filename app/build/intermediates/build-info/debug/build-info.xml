@@ -5,37 +5,32 @@
     build-mode="COLD"
     density="hdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
     plugin-version="3.1.1"
-    timestamp="1525987491656"
+    timestamp="1525998079410"
     token="2234430968878517015"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="293" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="27" />
+        duration="0" />
     <task
         name="verifier"
-        duration="12" />
+        duration="0" />
 
-    <artifact
-        location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-        type="SPLIT" />
     <artifact
         location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
         type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1525986880532"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="1525992832105"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
@@ -43,10 +38,13 @@
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
@@ -55,40 +53,61 @@
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1525987369328"
-        verifier="COLD_SWAP_REQUESTED" >
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
         <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1525987491656"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1525997253546"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1525997735229"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1525998079410"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />

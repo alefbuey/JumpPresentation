@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Window;
+import android.view.WindowManager;
 
 public class ApplyJob extends Activity {
 
@@ -18,5 +20,11 @@ public class ApplyJob extends Activity {
         this.setFinishOnTouchOutside(false);
 
         this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams params = this.getWindow().getAttributes();
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        params.gravity = Gravity.CENTER;
+        this.getWindow().setAttributes(params);
     }
 }
