@@ -7,25 +7,36 @@
     android:orientation="vertical"
     tools:context=".Profile"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:gravity="end"
-        android:background="#FFB84E">
 
-        <ImageView
-            android:id="@+id/ivSettings"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings"
-            android:clickable="true"
-            android:onClick="onClickSetting"
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_Back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_arrow_back"
+            android:background="@null"
+            android:onClick="onClickBack"
+            android:layout_alignParentLeft="true"
             />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/btn_Settings"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_settings"
+            android:onClick="onClickSetting"
+            android:background="@null"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,9 +60,10 @@
                     android:id="@+id/ivProfile"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/ic_person_profile"
                     android:clickable="true"
-                    android:onClick="onClickPhoto"/>
+                    android:onClick="onClickPhoto"
+                    app:civ_circle_background_color="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/tvRank"

@@ -17,7 +17,8 @@
         android:id="@+id/imageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/ph_profile"
+        android:src="@drawable/ic_person_profile"
+        app:civ_circle_background_color="#FFFFFF"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:civ_border_width="2dp"
@@ -32,6 +33,7 @@
         app:srcCompat="@drawable/ph_profile" /> -->
 
     <TextView
+        android:id="@+id/tv_Name_LastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -39,7 +41,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_subtitle" />

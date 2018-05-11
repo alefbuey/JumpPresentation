@@ -89,11 +89,13 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/ph_profile"
+                android:src="@drawable/ic_person_profile"
+                app:civ_circle_background_color="#FFFFFF"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/tv_jobName"
                 app:layout_constraintTop_toTopOf="@id/tv_jobName"
                 app:layout_constraintBottom_toBottomOf="@id/tv_jobName"
+                android:onClick="onClickProfile"
                 />
 
             <TextView
