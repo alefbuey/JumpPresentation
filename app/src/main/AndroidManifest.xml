@@ -32,12 +32,13 @@
         <activity android:name=".JobView" />
         <activity android:name=".ProfileSetting" />
         <activity android:name=".MyJobs" />
-
-        <activity android:name=".MyBusiness"></activity>
-
-        <activity android:name=".ApplyJob"
-                    android:theme="@android:style/Theme.Dialog"></activity>
-
+        <activity android:name=".MyBusiness" />
+        <activity
+            android:name=".ApplyJob"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".ListApplicants" />
+        <activity android:name=".AcceptApplicant"
+            android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 
 </manifest>

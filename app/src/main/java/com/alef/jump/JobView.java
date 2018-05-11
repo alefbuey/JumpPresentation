@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,10 +21,11 @@ import Logic.SendGetRequest;
 public class JobView extends AppCompatActivity {
 
     private int id;
+    private Double jobCost;
 
     TextView tvJobName, tvDesc, tvJobCost, tvStartDate, tvEndDate, tvNumVac;
 
-    Button btnApply;
+    Button btnApply, btnList;
 
 
     @Override
@@ -43,12 +45,28 @@ public class JobView extends AppCompatActivity {
         tvNumVac = findViewById(R.id.tv_numVacVal);
 
         btnApply = findViewById(R.id.btn_apply);
+        btnList = findViewById(R.id.btn_listApplicants);
 
         btnApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(JobView.this, ApplyJob.class);
+                intent.putExtra("idJob", id);
+                String jobName = tvJobName.getText().toString();
+                Double salary = jobCost/Double.parseDouble(tvNumVac.getText().toString());
+                intent.putExtra("jobName", jobName);
+                intent.putExtra("salary",new Functions().round(salary));
                 startActivity(intent);
+            }
+        });
+
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(JobView.this, ListApplicants.class);
+                intent.putExtra("idJob", id);
+                startActivity(intent);
+
             }
         });
 
@@ -63,8 +81,18 @@ public class JobView extends AppCompatActivity {
                         JSONObject dataUser = jsonObject.getJSONObject("dataUser");
                         //  JSONObject dataUserStaff = jsonObject.getJSONObject("dataUserStaff");
 
+                        int idEmployer = dataUser.getInt("id");
+
+                        if(idEmployer==Globals.getInstance().getId()){
+                            btnApply.setVisibility(View.GONE);
+                            btnList.setVisibility(View.VISIBLE);
+                        }else{
+                            btnList.setVisibility(View.GONE);
+                            btnApply.setVisibility(View.VISIBLE);
+                        }
 
                         String price = String.valueOf(dataJob.getInt("jobcost"));
+                        jobCost = Double.parseDouble(price);
                         tvJobName.setText(dataJob.getString("title"));
                         tvDesc.setText(dataJob.getString("description"));
                         tvJobCost.setText("$ "+ price);
