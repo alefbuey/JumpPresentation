@@ -16,4 +16,10 @@ public class Functions {
         return result;
     }
 
+
+    public double round (Double value){
+        Double aux = Double.valueOf(Math.round(value * 100));
+        return aux/100;
+    }
+
 }
