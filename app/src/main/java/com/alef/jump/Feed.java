@@ -90,8 +90,7 @@ public class Feed extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
 
-            User user = (User) getIntent().getSerializableExtra("user");
-            String url = Constants.getSelectUserProfile() + "?email=" + user.getEmail();
+            String url = Constants.getSelectUserProfile() + "?email=" + Globals.getInstance().getEmail();
 
             @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest = new SendGetRequest(url) {
                 @Override
@@ -130,6 +129,7 @@ public class Feed extends AppCompatActivity
                                     jsonUserStaff.getString("about"),
                                     jsonUserStaff.getString("cellphone")
                             );
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -152,7 +152,8 @@ public class Feed extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(),MyJobs.class);
             startActivity(intent);
         } else if (id == R.id.nav_myBusiness) {
-
+            Intent intent = new Intent(getApplicationContext(), MyBusiness.class);
+            startActivity(intent);
         } else if (id == R.id.nav_addJob) {
             Intent intent = new Intent(getApplicationContext(), AddJob.class);
             startActivity(intent);
@@ -180,7 +181,7 @@ public class Feed extends AppCompatActivity
                     return true;
                 case R.id.navigation_favorites:
                     ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.ll_containerFrag, new FavJob());
+                    ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(2));
                     ft.commit();
                     return true;
                 case R.id.navigation_notifications:

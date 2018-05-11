@@ -5,29 +5,25 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
-public class MyJobs extends AppCompatActivity {
+public class MyBusiness extends AppCompatActivity {
 
-    String TAG = "MyJobs";
+    String TAG = "MyBusiness";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_jobs);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.ngt_MyJobs);
+        setContentView(R.layout.activity_my_business);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.ngt_MyBusiness);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        //Especificar el envio del id de Usuario
-
+        //Inicializar el primer fragmento
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.ll_containerFrag,JobContainer.newInstance(3));
+        ft.replace(R.id.ll_containerFrag,JobContainer.newInstance(6));
         ft.commit();
-
-
-
     }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,23 +35,21 @@ public class MyJobs extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_current:
                     ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.ll_containerFrag,JobContainer.newInstance(3));
+                    ft.replace(R.id.ll_containerFrag,JobContainer.newInstance(6));
                     ft.commit();
                     return true;
-                case R.id.navigation_applying:
+                case R.id.navigation_posted:
                     ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(4));
+                    ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(7));
                     ft.commit();
                     return true;
                 case R.id.navigation_history:
                     ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(5));
+                    ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(8));
                     ft.commit();
                     return true;
             }
             return false;
         }
     };
-
-
 }

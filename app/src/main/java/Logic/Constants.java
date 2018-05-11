@@ -11,9 +11,11 @@ public class Constants {
 
 
     //private static final String ip = "http://192.168.88.44"; //Oscar
+    private static final String ip = "http://172.23.207.50"; //Oscar
 
-    private static final String ip = "http://192.168.10.102"; //Fernando repetidor
-      //private static final String ip = "http://192.168.0.108"; //Fernando emulador
+    //private static final String ip = "http://192.168.10.102"; //Fernando repetidor
+    //  private static final String ip = "http://192.168.0.108"; //Fernando emulador
+
 
 
 
@@ -34,7 +36,11 @@ public class Constants {
     public static final String jobDelete = ip + "/JumpWebService/Logic/Work/jobDelete.php";
     public static final String jobUpdate = ip + "/JumpWebService/Logic/Work/jobUpdate.php";
     public static final String jobModeRead = ip + "/JumpWebService/Logic/Work/jobModeRead.php";
-
+    public static final String jobMyJobs = ip + "/JumpWebService/Logic/Work/jobMyJobs.php";
+    public static final String jobMyBusiness = ip + "/JumpWebService/Logic/Work/jobMyBusiness.php";
+    public static final String jobMyFovoriteJobs = ip + "/JumpWebService/Logic/Work/jobGetFavorite.php";
+    public static final String jobUpdateFavorite = ip + "/JumpWebService/Logic/Work/jobUpdateFavorite.php";
+    public static final String jobCheckFavorite = ip + "/JumpWebService/Logic/Work/jobCheckFavorite.php";
 
 
     public static String getSelectUserProfile() {
@@ -64,6 +70,21 @@ public class Constants {
     }
     public static String getJobModeRead() {
         return jobModeRead;
+    }
+    public static String getJobMyJobs() {
+        return jobMyJobs;
+    }
+    public static String getJobMyBusiness() {
+        return jobMyBusiness;
+    }
+    public static String getJobMyFovoriteJobs() {
+        return jobMyFovoriteJobs;
+    }
+    public static String getJobUpdateFavorite() {
+        return jobUpdateFavorite;
+    }
+    public static String getJobCheckFavorite() {
+        return jobCheckFavorite;
     }
 
     public static String getIp() {

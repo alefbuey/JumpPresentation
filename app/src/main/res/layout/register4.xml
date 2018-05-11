@@ -117,6 +117,10 @@
             android:paddingLeft="10dp"
             android:background="@drawable/ic_deadline"
             android:hint="Password"
+
+            android:gravity="center"
+            android:inputType="textPassword"
+
             app:layout_constraintLeft_toLeftOf="@id/tv_email"
             app:layout_constraintTop_toBottomOf="@id/tv_pass"
             />
