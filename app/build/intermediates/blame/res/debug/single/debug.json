@@ -116,6 +116,10 @@
         "source": "/home/ferynando7/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/a309ef496ba37df1dbb0b61a7e6d7825/res/drawable-ldrtl-xxhdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/drawable_ic_cancel.xml.flat",
+        "source": "/home/ferynando7/AndroidStudioProjects/Jump/app/src/main/res/drawable/ic_cancel.xml"
+    },
+    {
         "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_item_layout.xml.flat",
         "source": "/home/ferynando7/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/a309ef496ba37df1dbb0b61a7e6d7825/res/layout/abc_popup_menu_item_layout.xml"
     },
@@ -354,6 +358,10 @@
     {
         "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/drawable_ic_message_black_24dp.xml.flat",
         "source": "/home/ferynando7/AndroidStudioProjects/Jump/app/src/main/res/drawable/ic_message_black_24dp.xml"
+    },
+    {
+        "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/drawable_ic_accept.xml.flat",
+        "source": "/home/ferynando7/AndroidStudioProjects/Jump/app/src/main/res/drawable/ic_accept.xml"
     },
     {
         "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/menu_navigation_my_jobs.xml.flat",
@@ -1806,6 +1814,10 @@
     {
         "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/color_abc_tint_edittext.xml.flat",
         "source": "/home/ferynando7/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/a309ef496ba37df1dbb0b61a7e6d7825/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/drawable_dialog_background_inset.xml.flat",
+        "source": "/home/ferynando7/AndroidStudioProjects/Jump/app/src/main/res/drawable/dialog_background_inset.xml"
     },
     {
         "merged": "/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",

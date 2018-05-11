@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Register">
+    tools:context=".Register"
+    android:background="@drawable/lateral_bar_color">
 
 
 
