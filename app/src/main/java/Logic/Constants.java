@@ -10,7 +10,7 @@ public class Constants {
 
 
 
-    //private static final String ip = "http://192.168.88.44"; //Oscar
+    //private static final String ip = "http://192.168.88.50"; //Oscar
     private static final String ip = "http://172.23.207.50"; //Oscar
 
     //private static final String ip = "http://192.168.10.102"; //Fernando repetidor

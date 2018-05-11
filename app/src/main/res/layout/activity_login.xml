@@ -70,48 +70,79 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/center_centeru_v"/>
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-
-        android:paddingLeft="10dp"
-        android:background="@drawable/ic_deadline"
-        android:hint="email"
-        app:layout_constraintTop_toBottomOf="@id/iv_login"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/centerV"
-
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_action_user"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.325"
         />
 
     <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:id="@+id/etEmail"
+        android:layout_width="240dp"
+        android:layout_height="31dp"
+
+        android:background="@drawable/ic_deadline"
+        android:gravity="center"
+        android:hint="email"
         android:paddingLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/centerV"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/iv_login"
+        app:layout_constraintVertical_bias="0.522" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_action_lock_closed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="241dp"
+        android:layout_height="30dp"
         android:background="@drawable/ic_deadline"
         android:hint="******"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
         android:text=""
-        app:layout_constraintTop_toBottomOf="@id/etEmail"
-        app:layout_constraintLeft_toLeftOf="@id/etEmail"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/centerV"
-        android:textAlignment="center"/>
+        app:layout_constraintLeft_toLeftOf="@id/etEmail"
+        app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="90dp"
         android:layout_height="40dp"
-        android:text="Login"
         android:layout_gravity="center"
-        android:layout_marginRight="20dp"
-        android:onClick="onClickLogin"
         android:background="@drawable/ic_textspace_color"
+        android:onClick="onClickLogin"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/etEmail"
         app:layout_constraintTop_toBottomOf="@id/etPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
 
         />
 

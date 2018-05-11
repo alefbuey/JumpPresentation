@@ -94,6 +94,8 @@
                 app:layout_constraintLeft_toRightOf="@id/tv_jobName"
                 app:layout_constraintTop_toTopOf="@id/tv_jobName"
                 app:layout_constraintBottom_toBottomOf="@id/tv_jobName"
+                android:clickable="true"
+                android:onClick="onClickProfile"
                 />
 
             <TextView

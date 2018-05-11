@@ -21,7 +21,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.alef.jump.AddJob" />
         <activity
@@ -40,6 +39,7 @@
         <activity android:name="com.alef.jump.JobView" />
         <activity android:name="com.alef.jump.ProfileSetting" />
         <activity android:name="com.alef.jump.MyJobs" />
+        <activity android:name="com.alef.jump.MyBusiness" />
         <activity
             android:name="com.alef.jump.ApplyJob"
             android:theme="@android:style/Theme.Dialog" />

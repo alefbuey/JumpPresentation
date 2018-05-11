@@ -1,7 +1,7 @@
-#Thu May 10 19:21:20 ECT 2018
-base.0=/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/transforms/dexMerger/debug/11
+#Thu May 10 22:08:39 ECT 2018
+base.0=/home/zoso/Documentos/Workspaces/Workspace_of_Android_Studio/JumpPresentation/app/build/intermediates/transforms/dexMerger/debug/27
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/transforms/dexMerger/debug/12
+base.1=/home/zoso/Documentos/Workspaces/Workspace_of_Android_Studio/JumpPresentation/app/build/intermediates/transforms/dexMerger/debug/28

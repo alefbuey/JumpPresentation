@@ -1,4 +1,4 @@
-#Thu May 10 17:54:05 ECT 2018
-base.0=/home/ferynando7/AndroidStudioProjects/Jump/app/build/intermediates/transforms/dexMerger/debug/8
+#Fri May 11 11:24:04 ECT 2018
+base.0=/home/zoso/Documentos/Workspaces/Workspace_of_Android_Studio/JumpPresentation/app/build/intermediates/transforms/dexMerger/debug/24
 path.0=classes.dex
 renamed.0=classes.dex

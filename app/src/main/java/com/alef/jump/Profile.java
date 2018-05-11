@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,11 +26,13 @@ public class Profile extends AppCompatActivity {
 
     TabLayout tlProfile;
     ViewPager vpProfile;
+    int modo;
 
     //Variables de informacion
     ImageView ivProfile,ivSetting;
     TextView tvName, tvLastName, tvRank,tvPreferences,tvLocation;
     User user;
+    ImageButton btnBack1, btnSettings;
 
     //
 
@@ -37,6 +40,14 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile2);
+
+        modo = getIntent().getIntExtra("modo",2);
+
+         if(modo == 2){ //Perfil visto por otros
+             btnSettings = findViewById(R.id.btn_Settings);
+             btnSettings.setVisibility(View.GONE);
+            //ivProfile.setClickable(false); //NOTA MENTA HACER QUE NO TOME FOTO EN ESTE CASO
+        }
 
         vpProfile = (ViewPager) findViewById(R.id.vpProfile);
         setupViewPager(vpProfile);
@@ -81,6 +92,10 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),ProfileSetting.class);
         intent.putExtra("user",user);
         startActivity(intent);
+    }
+
+    public void onClickBack(View v) {
+        finish();
     }
 
 

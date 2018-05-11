@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,8 @@ import People.User;
 
 public class Feed extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView tvNameLastName, tvEmail;
 
     @SuppressLint("ResourceType")
     @Override
@@ -54,13 +57,19 @@ public class Feed extends AppCompatActivity
         NavigationView lateralBar = findViewById(R.id.nav_view);
         lateralBar.setNavigationItemSelectedListener(this);
 
+        View headerView = lateralBar.getHeaderView(0);
+        tvNameLastName = headerView.findViewById(R.id.tv_Name_LastName);
+        tvEmail = headerView.findViewById(R.id.tv_Email);
+        String name_lastname = Globals.getInstance().getName()+" " + Globals.getInstance().getLastName();
+        tvNameLastName.setText(name_lastname);
+        tvEmail.setText(Globals.getInstance().getEmail());
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.ll_containerFrag, JobContainer.newInstance(1));
         ft.commit();
 
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,6 +146,7 @@ public class Feed extends AppCompatActivity
                         Log.e("TAG", userToPass.toString());
                         Intent i = new Intent(getApplicationContext(), Profile.class);
                         i.putExtra("user", userToPass);
+                        i.putExtra("modo",1);
                         startActivity(i);
                     } else {
                         Toast.makeText(getApplicationContext(), "Failed Connection", Toast.LENGTH_LONG).show();
@@ -191,7 +201,7 @@ public class Feed extends AppCompatActivity
                     return true;
                 case R.id.navigation_messages:
                     ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.ll_containerFrag, new Messages());
+                    ft.replace(R.id.ll_containerFrag, new ChatFragment());
                     ft.commit();
                     return true;
 
