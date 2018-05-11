@@ -28,7 +28,9 @@ import Logic.SendGetRequest;
  */
 public class applicantItem extends Fragment {
 
-    int idUser, idJob;
+    int idEmployee, idJob;
+
+    String userName, userLastname;
 
     JSONObject dataApply;
 
@@ -55,7 +57,7 @@ public class applicantItem extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idUser = getArguments().getInt("idUser");
+            idEmployee = getArguments().getInt("idUser");
             idJob = getArguments().getInt("idJob");
         }
     }
@@ -76,11 +78,17 @@ public class applicantItem extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AcceptApplicant.class);
+                intent.putExtra("idEmployee", idEmployee);
+                intent.putExtra("idJob", idJob);
+                intent.putExtra("dataApply", String.valueOf(dataApply));
+                intent.putExtra("name", userName);
+                intent.putExtra("lastname", userLastname);
+                Log.d("DATA APPLY", String.valueOf(dataApply));
                 startActivity(intent);
             }
         });
 
-        String url = Constants.getApplicantInfo() +"?idemployee="+idUser+"&idjob="+idJob;
+        String url = Constants.getApplicantInfo() +"?idemployee="+idEmployee+"&idjob="+idJob;
 
         @SuppressLint("StaticFieldLeak") SendGetRequest sendGetRequest1 = new SendGetRequest(url) {
             @Override
@@ -91,10 +99,10 @@ public class applicantItem extends Fragment {
                         Log.d("response",response);
                         JSONObject jsonObject = new JSONObject(response);
                         dataApply = jsonObject.getJSONObject("applicationData");
-
                         JSONObject user = jsonObject.getJSONObject("employeeData");
-                        String userName = user.getString("name") + " " + user.getString("lastname");
-                        tvName.setText(userName);
+                        userName = user.getString("name");
+                        userLastname = user.getString("lastname");
+                        tvName.setText(userName+" "+userLastname);
                         tvRanking.setText(user.getString("rank"));
                     }
 
